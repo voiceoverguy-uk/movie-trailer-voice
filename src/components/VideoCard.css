@@ -1,0 +1,113 @@
+.video-card {
+  display: block;
+  flex: 0 0 calc(20% - 0.8rem);
+  min-width: 240px;
+  aspect-ratio: 16 / 9;
+  position: relative;
+  border-radius: 4px;
+  overflow: visible;
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+.video-card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  transition: all 0.3s ease;
+}
+
+.video-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.video-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem;
+}
+
+.video-card-content {
+  width: 100%;
+  transform: translateY(10px);
+  transition: transform 0.3s ease;
+}
+
+.video-card-play {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: white;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.video-card-title {
+  font-size: 1.2rem;
+  color: white;
+  margin-bottom: 0.25rem;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.video-card-genre {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Hover Effects */
+@media (hover: hover) {
+  .video-card:hover {
+    transform: scale(1.08);
+    z-index: 10;
+  }
+
+  .video-card:hover .video-card-inner {
+    box-shadow: 0 10px 30px rgba(229, 9, 20, 0.2), 0 0 0 1px rgba(255,255,255,0.1);
+  }
+
+  .video-card:hover .video-card-overlay {
+    opacity: 1;
+  }
+
+  .video-card:hover .video-card-content {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1200px) {
+  .video-card { flex: 0 0 calc(25% - 0.75rem); }
+}
+
+@media (max-width: 900px) {
+  .video-card { flex: 0 0 calc(33.333% - 0.66rem); }
+}
+
+@media (max-width: 600px) {
+  .video-card { flex: 0 0 calc(50% - 0.5rem); min-width: 160px; }
+  .video-card-overlay { opacity: 1; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%); }
+  .video-card-content { transform: translateY(0); }
+  .video-card-play { display: none; }
+  .video-card-title { font-size: 1rem; }
+}

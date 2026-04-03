@@ -1,0 +1,18 @@
+.home-page {
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+.main-content {
+  position: relative;
+  z-index: 2;
+  margin-top: -8vh; /* Overlap hero slightly */
+  background: linear-gradient(to bottom, transparent 0%, var(--bg) 15vh);
+  padding-bottom: 4rem;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-top: -4vh;
+  }
+}

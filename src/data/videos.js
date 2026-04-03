@@ -1,0 +1,103 @@
+export function getYouTubeId(url) {
+  const match = url.match(/(?:v=|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+  return match ? match[1] : null;
+}
+
+export function getThumbnail(url, quality = 'hqdefault') {
+  const id = getYouTubeId(url);
+  return id ? `https://img.youtube.com/vi/${id}/${quality}.jpg` : '';
+}
+
+export function getHeroThumbnail(url) {
+  const id = getYouTubeId(url);
+  if (!id) return '';
+  return `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
+}
+
+export function getHeroThumbnailFallback(url) {
+  return getThumbnail(url, 'sddefault');
+}
+
+export const heroClips = [
+  {
+    id: 'good-game-empire',
+    title: 'Good Game Empire',
+    description: 'Epic game trailer voiced by Guy Harris — the voice that commands empires.',
+    url: 'https://www.youtube.com/watch?v=z6WhxrAwfWw',
+    genre: 'Game Trailer',
+    profile: 'Epic',
+  },
+  {
+    id: 'movie-trailer-voice-in-action',
+    title: 'The Movie Trailer Voice in Action',
+    description: 'The definitive movie trailer voice. Cinematic, powerful, unforgettable.',
+    url: 'https://www.youtube.com/watch?v=bcCpLnX-1ck',
+    genre: 'Trailer',
+    profile: 'Dark',
+  },
+  {
+    id: 'dragon-city-trailer',
+    title: 'Dragon City Trailer',
+    description: 'Unleash the power. Dragon City — voiced with fire and fury.',
+    url: 'https://www.youtube.com/watch?v=ZtkYHKpKomM',
+    genre: 'Game Trailer',
+    profile: 'Action',
+  },
+  {
+    id: 'minecraft-beginners-handbook',
+    title: 'Minecraft Beginners Handbook',
+    description: "Even Minecraft gets the Hollywood treatment. That voice, though.",
+    url: 'https://www.youtube.com/watch?v=embrh2Y5VjI',
+    genre: 'Trailer',
+    profile: 'Spoof',
+  },
+];
+
+export const profileHeroMap = {
+  Epic: 0,
+  Dark: 1,
+  Action: 2,
+  Spoof: 3,
+};
+
+export const movieTrailerRow = {
+  id: 'trailers',
+  title: 'Movie Trailer Voice',
+  clips: [
+    { title: 'Good Game Empire', url: 'https://www.youtube.com/watch?v=z6WhxrAwfWw', genre: 'Game Trailer' },
+    { title: 'The Movie Trailer Voice in Action', url: 'https://www.youtube.com/watch?v=bcCpLnX-1ck', genre: 'Trailer' },
+    { title: 'Scottish National Party – Parody Film', url: 'https://www.youtube.com/watch?v=18oOI8mHZzs', genre: 'Parody' },
+    { title: 'Walking Dead – No Man\'s Land', url: 'https://www.youtube.com/watch?v=hZfE57Wdeew', genre: 'Trailer' },
+    { title: 'Prison Architect Trailer', url: 'https://www.youtube.com/watch?v=dABtGif6pmE', genre: 'Game Trailer' },
+    { title: 'Dragon City Trailer', url: 'https://www.youtube.com/watch?v=ZtkYHKpKomM', genre: 'Game Trailer' },
+    { title: 'Minecraft Beginners Handbook', url: 'https://www.youtube.com/watch?v=embrh2Y5VjI', genre: 'Trailer' },
+    { title: 'Thorpe Park Fright Nights', url: 'https://www.youtube.com/watch?v=MD6hG2HVid0', genre: 'Promo' },
+    { title: 'Turtle Strike Game Trailer', url: 'https://www.youtube.com/watch?v=IEqODwRGQig', genre: 'Game Trailer' },
+    { title: 'Circus Penarium Game Trailer', url: 'https://www.youtube.com/watch?v=zxxR7tENfcE', genre: 'Game Trailer' },
+    { title: 'UK Construction Week Trailer', url: 'https://www.youtube.com/watch?v=tr7YU4ExFXQ', genre: 'Promo' },
+    { title: 'Combat 8 Launch', url: 'https://www.youtube.com/watch?v=hYboVy3gKOw', genre: 'Game Trailer' },
+    { title: 'Robocide Trailer', url: 'https://www.youtube.com/watch?v=7PAXKApMYy8', genre: 'Game Trailer' },
+    { title: 'Kings Road Trailer', url: 'https://www.youtube.com/watch?v=Af5szC15B_8', genre: 'Game Trailer' },
+    { title: 'Land of Eyas', url: 'https://www.youtube.com/watch?v=439KyoB033w', genre: 'Game Trailer' },
+    { title: 'Movie Trailer Cliches', url: 'https://www.youtube.com/watch?v=URTglYVLaps', genre: 'Parody' },
+    { title: 'Judgment Apocalypse Survival', url: 'https://www.youtube.com/watch?v=6YcpADKL15U', genre: 'Game Trailer' },
+  ],
+};
+
+export const otherSuggestionsRow = {
+  id: 'other-suggestions',
+  title: 'Other Suggestions',
+  clips: [
+    { title: 'B-Movie Trailer Voice', url: 'https://www.youtube.com/watch?v=bTUlbDBdT6A', genre: 'Parody' },
+    { title: 'Minecraft Combat Handbook', url: 'https://www.youtube.com/watch?v=TISd_9l7ZvA', genre: 'Trailer' },
+    { title: 'This War of Mine Trailer', url: 'https://www.youtube.com/watch?v=z4KMUa14NfM', genre: 'Game Trailer' },
+    { title: 'Rocket & Groot B-Movie Voice', url: 'https://www.youtube.com/watch?v=lw3_DUx5jrk', genre: 'Parody' },
+    { title: 'Winterstate Trailer Voice', url: 'https://www.youtube.com/watch?v=FpXaS3fvggI', genre: 'Game Trailer' },
+    { title: 'DNCE – Life Style of Rich and Famous', url: 'https://www.youtube.com/watch?v=bEuSoDpzvak', genre: 'Promo' },
+    { title: 'The Escapists Game Trailer', url: 'https://www.youtube.com/watch?v=yq3bttMIbuI', genre: 'Game Trailer' },
+    { title: 'War Friends Army Voice', url: 'https://www.youtube.com/watch?v=-rAockr9los', genre: 'Game Trailer' },
+    { title: 'WORMS WMD Game Trailer', url: 'https://www.youtube.com/watch?v=ttcUCCYa7Uk', genre: 'Game Trailer' },
+    { title: 'MMX Hill Climb Game Trailer', url: 'https://www.youtube.com/watch?v=17XTUByi28Q', genre: 'Game Trailer' },
+    { title: 'Farm Heroes Saga', url: 'https://www.youtube.com/watch?v=7QXZdT4y0uI', genre: 'Game Trailer' },
+  ],
+};

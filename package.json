@@ -1,15 +1,20 @@
 {
-  "name": "nodejs",
+  "name": "movie-trailer-voice",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Movie Trailer Voice showreel site",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite --port 5000 --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "@types/node": "^22.13.11"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.11",
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^5.4.10"
   }
 }

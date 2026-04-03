@@ -1,0 +1,77 @@
+.video-row-container {
+  padding: 2rem 4%;
+  position: relative;
+}
+
+.video-row-title {
+  font-size: 1.8rem;
+  color: var(--text);
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.video-row-wrapper {
+  position: relative;
+  group: hover;
+}
+
+.video-row {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  overflow-y: visible;
+  padding: 1rem 0;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.video-row::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.row-nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 100%;
+  max-height: 200px;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  opacity: 0;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(2px);
+}
+
+.row-nav-arrow.prev {
+  left: -2%;
+  border-radius: 0 4px 4px 0;
+}
+
+.row-nav-arrow.next {
+  right: -2%;
+  border-radius: 4px 0 0 4px;
+}
+
+.video-row-container:hover .row-nav-arrow {
+  opacity: 1;
+}
+
+.row-nav-arrow:hover {
+  background: rgba(0,0,0,0.8);
+  color: var(--red);
+}
+
+@media (max-width: 768px) {
+  .row-nav-arrow {
+    display: none;
+  }
+  .video-row-container {
+    padding: 1.5rem 4%;
+  }
+}
