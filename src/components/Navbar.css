@@ -28,8 +28,21 @@
   gap: 3rem;
 }
 
-.navbar-logo img {
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar-v-icon {
   height: 32px;
+  width: 32px;
+  object-fit: contain;
+  border-radius: 2px;
+}
+
+.navbar-wordmark {
+  height: 22px;
   object-fit: contain;
 }
 

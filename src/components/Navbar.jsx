@@ -25,7 +25,8 @@ export default function Navbar() {
       <div className="navbar-container">
         <div className="navbar-left">
           <a href="#" className="navbar-logo">
-            <img src="/mtv-logo.jpg" alt="Movie Trailer Voice" />
+            <img src="/v-logo.jpg" alt="" className="navbar-v-icon" />
+            <img src="/mtv-logo.jpg" alt="Movie Trailer Voice" className="navbar-wordmark" />
           </a>
           <ul className="navbar-links desktop-only">
             {navLinks.map((link) => (
