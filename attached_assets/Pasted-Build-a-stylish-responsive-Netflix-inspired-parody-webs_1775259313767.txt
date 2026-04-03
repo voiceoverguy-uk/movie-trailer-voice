@@ -1,0 +1,237 @@
+Build a stylish, responsive, Netflix-inspired parody website for my Movie Trailer Voice showreel.
+
+Important:
+- This is NOT a literal Netflix clone. It should be clearly inspired by the browsing style and UX, but branded for my own voiceover work.
+- Keep it clean, cinematic, dark, premium, and simple to maintain.
+- Use my own branding colour, NOT Netflix red. Use VoiceoverGuy red throughout instead.
+- The site’s purpose is to act as a showreel page for my Movie Trailer Voice work.
+- Use YouTube thumbnails and links for now. Do not build a CMS or database.
+- Use a modern frontend stack suitable for Replit, keeping it lightweight and easy to edit later.
+- Prioritise polished UI, smooth browsing, hover effects, and a premium feel.
+
+BRAND / LOGO
+- Use the provided logo file: mtv-logo-black.jpg in the navbar.
+- Site title/theme is: Movie Trailer Voice
+- The visual style should feel cinematic, dramatic, premium, and fun.
+
+SITE STRUCTURE
+Create the following homepage experience:
+
+1. OPENING SCREEN
+- Full-screen “Who’s Watching?” intro before entering the main site
+- Four profile tiles:
+  - Epic
+  - Dark
+  - Action
+  - Spoof
+- Clicking any profile should enter the main homepage
+- For version 1, all profiles can open the same homepage, but whichever profile is clicked should influence which featured hero slide appears first if possible
+- Include subtle fade/transition animation when entering the site
+- Make this intro feel polished, playful, and inspired by streaming profile screens
+
+2. MAIN HOMEPAGE
+- Sticky top navbar with dark transparent background that becomes more solid on scroll
+- Navbar should include:
+  - logo on left
+  - Trailers
+  - Game Trailers
+  - Other Suggestions
+  - About
+  - Contact
+- Smooth scroll to sections when clicking nav items
+
+3. HERO FEATURED AREA
+- Large cinematic hero area at the top
+- Use a background image / thumbnail overlay approach for now based on selected featured clips
+- Include title, short supporting text, and buttons such as:
+  - Watch Now
+  - View on YouTube
+- Add a subtle dark gradient overlay for readability
+- Build this as a rotating featured carousel with 3–4 hero items
+- For now use these featured clips:
+
+Featured clips:
+1. Good Game Empire
+https://www.youtube.com/watch?v=z6WhxrAwfWw
+
+2. The Movie Trailer Voice in Action
+https://www.youtube.com/watch?v=bcCpLnX-1ck
+
+3. Dragon City Trailer
+https://www.youtube.com/watch?v=ZtkYHKpKomM
+
+4. Minecraft Beginners Handbook - Trailer
+https://www.youtube.com/watch?v=embrh2Y5VjI
+
+- For now use YouTube thumbnail images automatically where possible
+- Structure the hero so it can later accept custom overlay artwork/thumbnails easily
+
+4. CONTENT ROWS
+Create horizontally scrolling content rows inspired by streaming platforms.
+Each row should:
+- show YouTube thumbnails as cards
+- scroll horizontally
+- include left/right arrow controls
+- have clean hover effects
+- slightly enlarge cards on hover on desktop
+- support keyboard / touch scrolling where possible
+- clicking a card should open the YouTube video in a new tab, or optionally a simple modal/lightbox if easy
+
+Rows needed:
+
+ROW 1:
+Title: Movie Trailer Voice
+
+Include these clips:
+- Good Game Empire
+https://www.youtube.com/watch?v=z6WhxrAwfWw
+
+- The Movie Trailer Voice in Action
+https://www.youtube.com/watch?v=bcCpLnX-1ck
+
+- Scottish National Party - Parody Film
+https://www.youtube.com/watch?v=18oOI8mHZzs
+
+- Walking Dead - No Man's Land - Trailer
+https://www.youtube.com/watch?v=hZfE57Wdeew
+
+- Prison Architect Trailer
+https://www.youtube.com/watch?v=dABtGif6pmE
+
+- Dragon City Trailer
+https://www.youtube.com/watch?v=ZtkYHKpKomM
+
+- Minecraft Beginners Handbook - Trailer
+https://www.youtube.com/watch?v=embrh2Y5VjI
+
+- Thorpe Park Fright Nights
+https://www.youtube.com/watch?v=MD6hG2HVid0
+
+- Turtle Strike Game Trailer
+https://www.youtube.com/watch?v=IEqODwRGQig
+
+- Circus Penarium Game Trailer
+https://www.youtube.com/watch?v=zxxR7tENfcE
+
+- UK Construction Week Trailer
+https://www.youtube.com/watch?v=tr7YU4ExFXQ
+
+- Combat 8 Launch
+https://www.youtube.com/watch?v=hYboVy3gKOw
+
+- Robocide Trailer
+https://www.youtube.com/watch?v=7PAXKApMYy8
+
+- Kings Road Trailer
+https://www.youtube.com/watch?v=Af5szC15B_8
+
+- Land of Eyas
+https://www.youtube.com/watch?v=439KyoB033w
+
+- Movie Trailer Cliches
+https://www.youtube.com/watch?v=URTglYVLaps
+
+- Judgment Apocalypse Survival Voice
+https://www.youtube.com/watch?v=6YcpADKL15U
+
+ROW 2:
+Title: Other Suggestions
+
+Include these clips:
+- B-Movie Trailer Voice
+https://www.youtube.com/watch?v=bTUlbDBdT6A
+
+- Minecraft Combat Handbook - Trailer
+https://www.youtube.com/watch?v=TISd_9l7ZvA
+
+- This War of Mine Trailer
+https://www.youtube.com/watch?v=z4KMUa14NfM
+
+- Rocket & Groot B-Movie Voice
+https://www.youtube.com/watch?v=lw3_DUx5jrk
+
+- Winterstate Trailer Voice
+https://www.youtube.com/watch?v=FpXaS3fvggI
+
+- DNCE - Life Style of Rich and Famous
+https://www.youtube.com/watch?v=bEuSoDpzvak
+
+- The Escapists Game Trailer
+https://www.youtube.com/watch?v=yq3bttMIbuI
+
+- War Friends Army Voice
+https://www.youtube.com/watch?v=-rAockr9los
+
+- WORMS WMD Game Trailer
+https://www.youtube.com/watch?v=ttcUCCYa7Uk
+
+- MMX Hill Climb Game Trailer
+https://www.youtube.com/watch?v=17XTUByi28Q
+
+- Farm Heroes Saga
+https://www.youtube.com/watch?v=7QXZdT4y0uI
+
+5. HOVER CARD BEHAVIOUR
+- On desktop, cards should gently scale up on hover
+- Add a subtle shadow/glow and raise effect
+- If practical, show a small overlay on hover with:
+  - title
+  - short label like Trailer / Parody / Game Trailer / Promo
+- Keep this simple and elegant
+- Do NOT overcomplicate with autoplay previews yet
+
+6. ABOUT SECTION
+Create a short About Guy Harris section near the bottom of the page:
+- short professional intro
+- positioned as a premium British movie trailer / promo voice
+- cinematic but concise tone
+- include a button for contact / booking
+- do not make this too wordy
+
+7. CONTACT SECTION
+Create a simple contact section with:
+- headline such as “Book This Voice”
+- short supporting text
+- email button or contact CTA placeholder for now
+- YouTube button/link
+- keep layout premium and uncluttered
+
+8. FOOTER
+Include:
+- About Guy Harris
+- Contact
+- YouTube
+- Book This Voice
+- copyright line
+
+DESIGN DIRECTION
+- Dark background throughout
+- Use VoiceoverGuy red as the main accent colour
+- White/light grey typography
+- Strong cinematic spacing and hierarchy
+- Large bold headings
+- Smooth transitions
+- Premium streaming-platform feel
+- Desktop-first but fully responsive on mobile/tablet
+- Avoid clutter
+
+IMPLEMENTATION NOTES
+- Use reusable data-driven components for rows/cards so clips can be edited easily in one place
+- Store the video data in a clear local array/object structure
+- Automatically derive YouTube thumbnail URLs from the video links
+- Make hero items editable in one config/data section
+- Keep code clean and modular
+- Make it easy later to swap in custom thumbnails or custom poster art
+- Build with best practices for performance and responsive layout
+
+DELIVERABLE
+Produce the full first working version of the site with:
+- opening “Who’s Watching?” screen
+- navbar
+- featured hero carousel
+- horizontal video rows
+- about section
+- contact section
+- footer
+
+Once built, keep all content easy to edit and clearly structured for future refinement.
