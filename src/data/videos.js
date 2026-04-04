@@ -64,6 +64,15 @@ export const heroClips = [
     profile: 'Circus',
     heroImage: '/heroes/penarium.jpeg',
   },
+  {
+    id: 'hide-the-corpse',
+    title: 'Hide the Corpse',
+    description: "Nothing to see here. Definitely not a body. Guy Harris, voice of the suspiciously innocent.",
+    url: 'https://www.youtube.com/watch?v=I0LcSnCasGY',
+    genre: 'Game Trailer',
+    profile: 'Mystery',
+    heroImage: '/heroes/hide-the-corpse.jpg',
+  },
 ];
 
 export const profileHeroMap = {
@@ -72,6 +81,7 @@ export const profileHeroMap = {
   Action: 2,
   Spoof: 3,
   Circus: 4,
+  Mystery: 5,
 };
 
 export const movieTrailerRow = {
