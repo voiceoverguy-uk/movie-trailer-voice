@@ -18,7 +18,7 @@ function shuffle(arr) {
 }
 
 function shuffledRow(row) {
-  return { ...row, videos: shuffle(row.videos) };
+  return { ...row, clips: shuffle(row.clips) };
 }
 
 export default function HomePage({ selectedProfile, onSwitchProfile }) {
