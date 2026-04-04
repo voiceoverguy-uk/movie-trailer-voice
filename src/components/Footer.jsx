@@ -2,9 +2,10 @@ import React from 'react';
 import './Footer.css';
 
 const MICROSITES = [
-  { label: 'VoiceOfGod.co.uk',  href: 'https://www.voiceofgod.co.uk' },
-  { label: 'PathéVoice.co.uk',  href: 'https://www.pathevoice.co.uk' },
-  { label: 'SantaGuy.co.uk',    href: 'https://www.santaguy.co.uk' },
+  { label: 'VoiceOfGod.co.uk',     href: 'https://www.voiceofgod.co.uk' },
+  { label: 'PathéVoice.co.uk',     href: 'https://www.pathevoice.co.uk' },
+  { label: 'SantaGuy.co.uk',       href: 'https://www.santaguy.co.uk' },
+  { label: 'HalloweenVoice.co.uk', href: 'https://www.halloweenvoice.co.uk' },
 ];
 
 export default function Footer() {
