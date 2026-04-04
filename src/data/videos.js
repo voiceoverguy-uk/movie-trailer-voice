@@ -120,9 +120,9 @@ export const gameTrailersRow = {
   ],
 };
 
-export const otherSuggestionsRow = {
-  id: 'other-suggestions',
-  title: 'Other Suggestions',
+export const fullCollectionRow = {
+  id: 'full-collection',
+  title: 'Full Collection',
   clips: [
     { title: 'B-Movie Trailer Voice', url: 'https://www.youtube.com/watch?v=bTUlbDBdT6A', genre: 'Parody' },
     { title: 'Minecraft Combat Handbook', url: 'https://www.youtube.com/watch?v=TISd_9l7ZvA', genre: 'Trailer' },

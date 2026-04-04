@@ -5,7 +5,7 @@ import VideoRow from './VideoRow';
 import AboutSection from './AboutSection';
 import ContactSection from './ContactSection';
 import Footer from './Footer';
-import { heroClips, profileHeroMap, movieTrailerRow, bMovieRow, gameTrailersRow, otherSuggestionsRow } from '../data/videos';
+import { heroClips, profileHeroMap, movieTrailerRow, bMovieRow, gameTrailersRow, fullCollectionRow } from '../data/videos';
 import './HomePage.css';
 
 function shuffle(arr) {
@@ -31,8 +31,8 @@ export default function HomePage({ selectedProfile, onSwitchProfile }) {
   const rows = useMemo(() => ({
     trailers: shuffledRow(movieTrailerRow),
     gameTrailers: shuffledRow(gameTrailersRow),
-    otherSuggestions: shuffledRow(otherSuggestionsRow),
     bMovie: shuffledRow(bMovieRow),
+    fullCollection: shuffledRow(fullCollectionRow),
   }), []);
 
   return (
@@ -42,8 +42,8 @@ export default function HomePage({ selectedProfile, onSwitchProfile }) {
       <div className="main-content">
         <VideoRow id="trailers" row={rows.trailers} />
         <VideoRow id="game-trailers" row={rows.gameTrailers} />
-        <VideoRow id="other-suggestions" row={rows.otherSuggestions} />
         <VideoRow id="b-movie" row={rows.bMovie} />
+        <VideoRow id="full-collection" row={rows.fullCollection} />
         <AboutSection />
         <ContactSection />
       </div>

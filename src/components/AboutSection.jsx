@@ -27,7 +27,7 @@ export default function AboutSection() {
         <div className="about-content">
           <h2 className="section-heading display-font">The Voice Behind The Screen</h2>
           <p className="about-text">
-            A voice that's been behind some of gaming and entertainment's most memorable trailers — commanding, cinematic, and undeniably British. Whether your project needs gravitas, power, or a knowing wink, Guy delivers.
+            A voice that's behind some of gaming and entertainment's most memorable trailers. Commanding, cinematic, and undeniably British or American. If your project needs gravitas, power, or a knowing wink, Guy delivers.
           </p>
           <a href="#contact" className="btn btn-primary">Book The Voice</a>
         </div>

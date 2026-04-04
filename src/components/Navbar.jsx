@@ -33,8 +33,10 @@ export default function Navbar({ onSwitchProfile }) {
   };
 
   const navLinks = [
-    { name: 'Trailers', href: '#trailers' },
-    { name: 'Other Suggestions', href: '#other-suggestions' },
+    { name: 'Movie Trailers', href: '#trailers' },
+    { name: 'Game Trailers', href: '#game-trailers' },
+    { name: 'B-Movie', href: '#b-movie' },
+    { name: 'Full Collection', href: '#full-collection' },
     { name: 'About', href: '#about' },
     { name: 'Contact', href: '#contact' },
   ];
