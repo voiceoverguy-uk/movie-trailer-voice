@@ -160,7 +160,7 @@
   .hero-overlay {
     background: linear-gradient(0deg, rgba(10,10,10,1) 0%, rgba(10,10,10,0.6) 50%, rgba(10,10,10,0.3) 100%);
     align-items: flex-end;
-    padding-bottom: 5rem;
+    padding-bottom: 3.5rem;
   }
   .hero-content {
     text-align: center;
@@ -172,6 +172,7 @@
     display: none;
   }
   .hero-dots {
+    bottom: 1rem;
     left: 50%;
     transform: translateX(-50%);
   }
