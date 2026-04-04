@@ -71,7 +71,7 @@ export default function Navbar({ selectedProfile, onSwitchProfile }) {
     { name: 'Movie Trailers', href: '#trailers' },
     { name: 'Game Trailers', href: '#game-trailers' },
     { name: 'B-Movie', href: '#b-movie' },
-    { name: 'Full Collection', href: '#full-collection' },
+    { name: 'VoiceoverGuy', href: '#full-collection' },
     { name: 'About', href: '#about' },
     { name: 'Contact', href: '#contact' },
   ];
