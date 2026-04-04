@@ -21,9 +21,9 @@ export default function HomePage({ selectedProfile }) {
       <HeroCarousel heroClips={heroClips} initialIndex={initialHeroIndex} />
       <div className="main-content">
         <VideoRow id="trailers" row={movieTrailerRow} />
-        <VideoRow id="b-movie" row={bMovieRow} />
         <VideoRow id="game-trailers" row={gameTrailersRow} />
         <VideoRow id="other-suggestions" row={otherSuggestionsRow} />
+        <VideoRow id="b-movie" row={bMovieRow} />
         <AboutSection />
         <ContactSection />
       </div>

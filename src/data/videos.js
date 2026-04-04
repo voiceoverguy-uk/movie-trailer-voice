@@ -22,7 +22,7 @@ export const heroClips = [
   {
     id: 'good-game-empire',
     title: 'Good Game Empire',
-    description: 'Epic game trailer voiced by Guy Harris — the voice that commands empires.',
+    description: 'Epic game trailer voiced by Guy Harris, the voice that commands empires.',
     url: 'https://www.youtube.com/watch?v=z6WhxrAwfWw',
     genre: 'Game Trailer',
     profile: 'Epic',
@@ -40,7 +40,7 @@ export const heroClips = [
   {
     id: 'dragon-city-trailer',
     title: 'Dragon City Trailer',
-    description: 'Unleash the power. Dragon City — voiced with fire and fury.',
+    description: 'Unleash the power. Dragon City, voiced with fire and fury.',
     url: 'https://www.youtube.com/watch?v=ZtkYHKpKomM',
     genre: 'Game Trailer',
     profile: 'Action',
@@ -70,8 +70,8 @@ export const movieTrailerRow = {
   clips: [
     { title: 'Good Game Empire', url: 'https://www.youtube.com/watch?v=z6WhxrAwfWw', genre: 'Game Trailer' },
     { title: 'The Movie Trailer Voice in Action', url: 'https://www.youtube.com/watch?v=bcCpLnX-1ck', genre: 'Trailer' },
-    { title: 'Scottish National Party – Parody Film', url: 'https://www.youtube.com/watch?v=18oOI8mHZzs', genre: 'Parody' },
-    { title: 'Walking Dead – No Man\'s Land', url: 'https://www.youtube.com/watch?v=hZfE57Wdeew', genre: 'Trailer' },
+    { title: 'Scottish National Party Parody Film', url: 'https://www.youtube.com/watch?v=18oOI8mHZzs', genre: 'Parody' },
+    { title: 'Walking Dead: No Man\'s Land', url: 'https://www.youtube.com/watch?v=hZfE57Wdeew', genre: 'Trailer' },
     { title: 'Prison Architect Trailer', url: 'https://www.youtube.com/watch?v=dABtGif6pmE', genre: 'Game Trailer' },
     { title: 'Dragon City Trailer', url: 'https://www.youtube.com/watch?v=ZtkYHKpKomM', genre: 'Game Trailer' },
     { title: 'Minecraft Beginners Handbook', url: 'https://www.youtube.com/watch?v=embrh2Y5VjI', genre: 'Trailer' },
@@ -102,7 +102,7 @@ export const gameTrailersRow = {
   title: 'Game Trailers',
   clips: [
     { title: 'Good Game Empire', url: 'https://www.youtube.com/watch?v=z6WhxrAwfWw', genre: 'Game Trailer' },
-    { title: 'Walking Dead – No Man\'s Land', url: 'https://www.youtube.com/watch?v=hZfE57Wdeew', genre: 'Game Trailer' },
+    { title: 'Walking Dead: No Man\'s Land', url: 'https://www.youtube.com/watch?v=hZfE57Wdeew', genre: 'Game Trailer' },
     { title: 'Prison Architect Trailer', url: 'https://www.youtube.com/watch?v=dABtGif6pmE', genre: 'Game Trailer' },
     { title: 'Dragon City Trailer', url: 'https://www.youtube.com/watch?v=ZtkYHKpKomM', genre: 'Game Trailer' },
     { title: 'Turtle Strike Game Trailer', url: 'https://www.youtube.com/watch?v=IEqODwRGQig', genre: 'Game Trailer' },
@@ -129,7 +129,7 @@ export const otherSuggestionsRow = {
     { title: 'This War of Mine Trailer', url: 'https://www.youtube.com/watch?v=z4KMUa14NfM', genre: 'Game Trailer' },
     { title: 'Rocket & Groot B-Movie Voice', url: 'https://www.youtube.com/watch?v=lw3_DUx5jrk', genre: 'Parody' },
     { title: 'Winterstate Trailer Voice', url: 'https://www.youtube.com/watch?v=FpXaS3fvggI', genre: 'Game Trailer' },
-    { title: 'DNCE – Life Style of Rich and Famous', url: 'https://www.youtube.com/watch?v=bEuSoDpzvak', genre: 'Promo' },
+    { title: 'DNCE: Life Style of Rich and Famous', url: 'https://www.youtube.com/watch?v=bEuSoDpzvak', genre: 'Promo' },
     { title: 'The Escapists Game Trailer', url: 'https://www.youtube.com/watch?v=yq3bttMIbuI', genre: 'Game Trailer' },
     { title: 'War Friends Army Voice', url: 'https://www.youtube.com/watch?v=-rAockr9los', genre: 'Game Trailer' },
     { title: 'WORMS WMD Game Trailer', url: 'https://www.youtube.com/watch?v=ttcUCCYa7Uk', genre: 'Game Trailer' },
