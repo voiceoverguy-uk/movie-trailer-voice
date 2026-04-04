@@ -117,6 +117,9 @@ export const gameTrailersRow = {
     { title: 'WORMS WMD Game Trailer', url: 'https://www.youtube.com/watch?v=ttcUCCYa7Uk', genre: 'Game Trailer' },
     { title: 'MMX Hill Climb Game Trailer', url: 'https://www.youtube.com/watch?v=17XTUByi28Q', genre: 'Game Trailer' },
     { title: 'Farm Heroes Saga', url: 'https://www.youtube.com/watch?v=7QXZdT4y0uI', genre: 'Game Trailer' },
+    { title: 'Hide the Corpse', url: 'https://www.youtube.com/watch?v=I0LcSnCasGY', genre: 'Game Trailer' },
+    { title: 'Smash Bandits', url: 'https://www.youtube.com/watch?v=4hHuiPqQkvs', genre: 'Game Trailer' },
+    { title: '13 Dead End Drive', url: 'https://www.youtube.com/watch?v=2mqiqOcM7t0', genre: 'Game Trailer' },
   ],
 };
 
@@ -143,5 +146,10 @@ export const fullCollectionRow = {
     { title: 'Worms Ultimate Mayhem Outtakes', url: 'https://www.youtube.com/watch?v=3hx2CoIlZBc', genre: 'Game' },
     { title: 'Gooey Louie', url: 'https://www.youtube.com/watch?v=YtTD1k-AGJY', genre: 'Character Voice' },
     { title: 'Silly Moo', url: 'https://www.youtube.com/watch?v=XsV-0ovRCK0', genre: 'Character Voice' },
+    { title: 'Scream Ghost Face', url: 'https://www.youtube.com/watch?v=veUdsSVFn6A', genre: 'Character Voice' },
+    { title: 'P&O Ferries Santa', url: 'https://www.youtube.com/watch?v=Jjj1as7mpUw', genre: 'TV Ad' },
+    { title: 'Clash of Clans Goblins', url: 'https://www.youtube.com/watch?v=_CPrYB6Q-HM', genre: 'Character Voice' },
+    { title: 'David Attenborough - Biffa', url: 'https://www.youtube.com/watch?v=09ulDo-3reM', genre: 'Character Voice' },
+    { title: 'Boom Beach Hammerman', url: 'https://www.youtube.com/watch?v=JId2ODYrXq4', genre: 'Character Voice' },
   ],
 };
