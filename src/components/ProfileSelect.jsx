@@ -121,7 +121,6 @@ export default function ProfileSelect({ onSelect }) {
   };
 
   const progressPct = (timeLeft / AUTO_SECONDS) * 100;
-  const savedName = localStorage.getItem(STORAGE_KEY);
 
   return (
     <div className={`profile-select-container ${fading ? 'fade-out' : ''}`}>
@@ -182,7 +181,7 @@ export default function ProfileSelect({ onSelect }) {
                 <line x1="4" y1="12" x2="20" y2="12"></line>
               </svg>
             </div>
-            <span className="profile-name">{savedName ? 'Change Name' : 'Add Profile'}</span>
+            <span className="profile-name">Add Profile</span>
           </div>
         </div>
       </div>
