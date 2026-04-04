@@ -20,7 +20,7 @@ const CUSTOM_TILE_COLOR = 'linear-gradient(135deg, #6a3093, #a044ff)';
 const STORAGE_KEY = 'mtv_custom_profile';
 const AVATAR_KEY  = 'mtv_custom_avatar';
 const NAME_PATTERN = /^[a-zA-Z\-']+$/;
-const AUTO_SECONDS = 12;
+const AUTO_SECONDS = 20;
 
 function pickThreeUniqueNames(names) {
   return [...names].sort(() => Math.random() - 0.5).slice(0, 3);
