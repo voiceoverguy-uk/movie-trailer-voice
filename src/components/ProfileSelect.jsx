@@ -178,7 +178,7 @@ export default function ProfileSelect({ onSelect }) {
 
       {/* ── Profile picker ── */}
       <div className="profile-select-content">
-        <h1 className="profile-heading">What You Watching?</h1>
+        <h1 className="profile-heading">Wanna Watch?</h1>
         <div className="profiles-row">
           {profiles.map((profile, idx) => (
             <div
