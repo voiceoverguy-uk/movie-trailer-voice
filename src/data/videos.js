@@ -124,7 +124,7 @@ export const fullCollectionRow = {
   id: 'full-collection',
   title: 'VoiceoverGuy',
   clips: [
-    { title: 'Vinted Cash Cow', url: 'https://www.youtube.com/watch?v=2SSgZGK1S9U', genre: 'TV Ad' },
+    { title: 'Vintage Cash Cow', url: 'https://www.youtube.com/watch?v=2SSgZGK1S9U', genre: 'TV Ad' },
     { title: 'TV Choice Awards', url: 'https://www.youtube.com/watch?v=4Le6P6sk7cs', genre: 'Awards' },
     { title: 'GB News', url: 'https://www.youtube.com/watch?v=5jEcPyu2S5s', genre: 'Broadcast' },
     { title: 'Star Wars Characters', url: 'https://www.youtube.com/watch?v=Fm0qSBLhA6A', genre: 'Character Voice' },
