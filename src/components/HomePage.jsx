@@ -26,8 +26,13 @@ export default function HomePage({ selectedProfile, onSwitchProfile }) {
     window.scrollTo(0, 0);
   }, []);
 
-  const profileName = selectedProfile?.name ?? selectedProfile ?? '';
-  const initialHeroIndex = profileHeroMap[profileName] !== undefined ? profileHeroMap[profileName] : 0;
+  const { shuffledHeroClips, initialHeroIndex } = useMemo(() => {
+    const profileName = selectedProfile?.name ?? selectedProfile ?? '';
+    const preferredId = heroClips[profileHeroMap[profileName]]?.id;
+    const shuffled = shuffle(heroClips);
+    const idx = preferredId ? Math.max(shuffled.findIndex(c => c.id === preferredId), 0) : 0;
+    return { shuffledHeroClips: shuffled, initialHeroIndex: idx };
+  }, []);
 
   const rows = useMemo(() => ({
     trailers: shuffledRow(movieTrailerRow),
@@ -39,7 +44,7 @@ export default function HomePage({ selectedProfile, onSwitchProfile }) {
   return (
     <div className="home-page fade-in">
       <Navbar selectedProfile={selectedProfile} onSwitchProfile={onSwitchProfile} />
-      <HeroCarousel heroClips={heroClips} initialIndex={initialHeroIndex} />
+      <HeroCarousel heroClips={shuffledHeroClips} initialIndex={initialHeroIndex} />
       <div className="main-content">
         <VideoRow id="trailers" row={rows.trailers} />
         <VideoRow id="game-trailers" row={rows.gameTrailers} />
