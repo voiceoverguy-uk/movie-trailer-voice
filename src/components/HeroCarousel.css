@@ -133,8 +133,9 @@
 
 .hero-dots {
   position: absolute;
-  bottom: 2rem;
-  left: 4%;
+  bottom: 4.5rem;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   gap: 0.5rem;
   z-index: 3;
