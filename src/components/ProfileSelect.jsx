@@ -17,8 +17,8 @@ const PROFILE_NAMES = [
 ];
 
 const CUSTOM_TILE_COLOR = 'linear-gradient(135deg, #6a3093, #a044ff)';
-const STORAGE_KEY = 'mtv_custom_profile';
-const AVATAR_KEY  = 'mtv_custom_avatar';
+const STORAGE_KEY  = 'mtv_custom_profile';
+const AVATAR_KEY   = 'mtv_custom_avatar';
 const NAME_PATTERN = /^[a-zA-Z\-']+$/;
 const AUTO_SECONDS = 20;
 
@@ -35,32 +35,36 @@ function pickTwoHeroClips() {
 }
 
 export default function ProfileSelect({ onSelect }) {
-  const [fading, setFading]               = useState(false);
-  const [modalOpen, setModalOpen]         = useState(false);
-  const [inputName, setInputName]         = useState('');
-  const [inputError, setInputError]       = useState('');
+  const [fading, setFading]                 = useState(false);
+  const [modalOpen, setModalOpen]           = useState(false);
+  const [modalMode, setModalMode]           = useState('create'); // 'create' | 'edit'
+  const [inputName, setInputName]           = useState('');
+  const [inputError, setInputError]         = useState('');
   const [selectedAvatar, setSelectedAvatar] = useState(null);
-  const [timeLeft, setTimeLeft]           = useState(AUTO_SECONDS);
+  const [timeLeft, setTimeLeft]             = useState(AUTO_SECONDS);
 
-  const [heroClipPair] = useState(() => pickTwoHeroClips());
-
-  const [displayedProfiles] = useState(() => {
-    const savedName   = localStorage.getItem(STORAGE_KEY);
-    const savedAvatar = localStorage.getItem(AVATAR_KEY);
-    const randoms     = pickThreeUniqueNames(PROFILE_NAMES);
-    const avatarPool  = pickUniqueAvatars(3);
-
-    if (savedName) {
-      const others = randoms.filter(n => n.toLowerCase() !== savedName.toLowerCase());
-      return [
-        { name: savedName,  avatarSrc: savedAvatar || null, isCustom: true },
-        { name: others[0],  avatarSrc: avatarPool[0].src },
-        { name: others[1],  avatarSrc: avatarPool[1].src },
-      ];
-    }
-    return randoms.map((name, i) => ({ name, avatarSrc: avatarPool[i].src }));
+  /* Custom profile — tracked in state so edits update the tile live */
+  const [customProfile, setCustomProfile] = useState(() => {
+    const name      = localStorage.getItem(STORAGE_KEY);
+    const avatarSrc = localStorage.getItem(AVATAR_KEY);
+    return name ? { name, avatarSrc } : null;
   });
 
+  /* Celebrity tiles — fixed on mount, 2 slots when custom profile exists, 3 otherwise */
+  const [celebProfiles] = useState(() => {
+    const savedName  = localStorage.getItem(STORAGE_KEY);
+    const randoms    = pickThreeUniqueNames(PROFILE_NAMES);
+    const avatarPool = pickUniqueAvatars(3);
+    const names = savedName
+      ? randoms.filter(n => n.toLowerCase() !== savedName.toLowerCase()).slice(0, 2)
+      : randoms.slice(0, 3);
+    return names.map((name, i) => ({ name, avatarSrc: avatarPool[i].src }));
+  });
+
+  /* Hero backdrop images */
+  const [heroClipPair] = useState(() => pickTwoHeroClips());
+
+  /* ── Auto-advance timer ── */
   const handleSelect = useCallback((profileName) => {
     setFading(true);
     setTimeout(() => onSelect(profileName), 800);
@@ -69,19 +73,32 @@ export default function ProfileSelect({ onSelect }) {
   useEffect(() => {
     if (modalOpen || fading) return;
     if (timeLeft <= 0) {
-      handleSelect(displayedProfiles[0].name);
+      const first = customProfile ?? celebProfiles[0];
+      handleSelect(first.name);
       return;
     }
     const id = setTimeout(() => setTimeLeft(t => t - 1), 1000);
     return () => clearTimeout(id);
-  }, [timeLeft, modalOpen, fading, handleSelect, displayedProfiles]);
+  }, [timeLeft, modalOpen, fading, handleSelect, customProfile, celebProfiles]);
 
-  const openModal = () => {
+  /* ── Modal helpers ── */
+  const openCreateModal = () => {
+    setModalMode('create');
+    setInputName('');
+    setInputError('');
+    setSelectedAvatar(null);
+    setModalOpen(true);
+  };
+
+  const openEditModal = (e) => {
+    e.stopPropagation();
+    const existingName      = localStorage.getItem(STORAGE_KEY) ?? '';
     const existingAvatarSrc = localStorage.getItem(AVATAR_KEY);
     const preselected = existingAvatarSrc
       ? AVATARS.find(av => av.src === existingAvatarSrc) ?? null
       : null;
-    setInputName('');
+    setModalMode('edit');
+    setInputName(existingName);
     setInputError('');
     setSelectedAvatar(preselected);
     setModalOpen(true);
@@ -94,25 +111,35 @@ export default function ProfileSelect({ onSelect }) {
     setSelectedAvatar(null);
   };
 
+  const validateName = (raw) => {
+    const trimmed = raw.trim();
+    if (!trimmed) return { ok: false, error: '' };
+    if (trimmed.length > 11) return { ok: false, error: 'First name must be 11 characters or fewer.' };
+    if (!NAME_PATTERN.test(trimmed)) return { ok: false, error: 'First names only — letters, hyphens and apostrophes allowed.' };
+    return { ok: true, trimmed };
+  };
+
   const handleContinue = () => {
-    const trimmed = inputName.trim();
-    if (!trimmed) return;
-    if (trimmed.length > 11) {
-      setInputError('First name must be 11 characters or fewer.');
-      return;
-    }
-    if (!NAME_PATTERN.test(trimmed)) {
-      setInputError('First names only — letters, hyphens and apostrophes allowed.');
-      return;
-    }
+    const { ok, trimmed, error } = validateName(inputName);
+    if (!ok) { setInputError(error); return; }
+
     localStorage.setItem(STORAGE_KEY, trimmed);
-    if (selectedAvatar) {
-      localStorage.setItem(AVATAR_KEY, selectedAvatar.src);
+    const avatarSrc = selectedAvatar ? selectedAvatar.src : null;
+    if (avatarSrc) {
+      localStorage.setItem(AVATAR_KEY, avatarSrc);
     } else {
       localStorage.removeItem(AVATAR_KEY);
     }
-    closeModal();
-    handleSelect(trimmed);
+
+    if (modalMode === 'edit') {
+      /* Edit: update tile in place, stay on splash */
+      setCustomProfile({ name: trimmed, avatarSrc });
+      closeModal();
+    } else {
+      /* Create: navigate straight into the site */
+      closeModal();
+      handleSelect(trimmed);
+    }
   };
 
   const handleKeyDown = (e) => {
@@ -121,6 +148,11 @@ export default function ProfileSelect({ onSelect }) {
   };
 
   const progressPct = (timeLeft / AUTO_SECONDS) * 100;
+
+  /* Profiles to render in the row */
+  const profiles = customProfile
+    ? [{ ...customProfile, isCustom: true }, ...celebProfiles.slice(0, 2)]
+    : celebProfiles;
 
   return (
     <div className={`profile-select-container ${fading ? 'fade-out' : ''}`}>
@@ -133,7 +165,6 @@ export default function ProfileSelect({ onSelect }) {
               key={clip.id}
               src={getHeroThumbnail(clip.url)}
               onLoad={(e) => {
-                /* YouTube returns a 120×90 placeholder when maxresdefault is unavailable */
                 if (e.target.naturalWidth <= 120) {
                   e.target.src = getHeroThumbnailFallback(clip.url);
                 }
@@ -155,26 +186,44 @@ export default function ProfileSelect({ onSelect }) {
       <div className="profile-select-content">
         <h1 className="profile-heading">What You Watching?</h1>
         <div className="profiles-row">
-          {displayedProfiles.map((profile, idx) => (
+          {profiles.map((profile, idx) => (
             <div
               key={profile.name}
               className={`profile-card slide-up slide-up-delay-${idx}`}
               onClick={() => handleSelect(profile.name)}
             >
-              <div className="profile-avatar">
-                {profile.avatarSrc ? (
-                  <img src={profile.avatarSrc} alt={profile.name} className="profile-avatar-img" />
-                ) : (
-                  <div className="profile-avatar-fallback" style={{ background: CUSTOM_TILE_COLOR }}>
-                    <span className="display-font profile-icon">{profile.name[0]}</span>
-                  </div>
+              <div className="profile-avatar-wrap">
+                <div className="profile-avatar">
+                  {profile.avatarSrc ? (
+                    <img src={profile.avatarSrc} alt={profile.name} className="profile-avatar-img" />
+                  ) : (
+                    <div className="profile-avatar-fallback" style={{ background: CUSTOM_TILE_COLOR }}>
+                      <span className="display-font profile-icon">{profile.name[0]}</span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Edit pencil — only on the custom tile */}
+                {profile.isCustom && (
+                  <button
+                    className="profile-edit-btn"
+                    onClick={openEditModal}
+                    aria-label="Edit profile"
+                    title="Edit profile"
+                  >
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                      <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                    </svg>
+                  </button>
                 )}
               </div>
               <span className="profile-name">{profile.name}</span>
             </div>
           ))}
 
-          <div className="profile-card add-profile-card slide-up slide-up-delay-3" onClick={openModal}>
+          {/* Add Profile tile */}
+          <div className="profile-card add-profile-card slide-up slide-up-delay-3" onClick={openCreateModal}>
             <div className="profile-avatar add-profile-avatar">
               <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="square">
                 <line x1="12" y1="4" x2="12" y2="20"></line>
@@ -191,11 +240,13 @@ export default function ProfileSelect({ onSelect }) {
         <div className="auto-advance-progress" style={{ width: `${progressPct}%` }} />
       </div>
 
-      {/* ── Add/Edit Profile modal ── */}
+      {/* ── Modal ── */}
       {modalOpen && (
         <div className="profile-modal-backdrop" onClick={closeModal}>
           <div className="profile-modal" onClick={(e) => e.stopPropagation()}>
-            <h2 className="profile-modal-title">Create Your Profile</h2>
+            <h2 className="profile-modal-title">
+              {modalMode === 'edit' ? 'Edit Profile' : 'Create Your Profile'}
+            </h2>
 
             <input
               className={`profile-modal-input ${inputError ? 'has-error' : ''}`}
@@ -229,7 +280,7 @@ export default function ProfileSelect({ onSelect }) {
               onClick={handleContinue}
               disabled={!inputName.trim()}
             >
-              Continue
+              {modalMode === 'edit' ? 'Save Changes' : 'Continue'}
             </button>
             <button className="profile-modal-cancel" onClick={closeModal}>
               Cancel

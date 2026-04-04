@@ -108,12 +108,18 @@
   transform: scale(1.07);
 }
 
+.profile-avatar-wrap {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
 .profile-avatar {
   width: 148px;
   height: 148px;
   border-radius: 8px;
   overflow: hidden;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   border: 3px solid transparent;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -172,6 +178,32 @@
 .add-profile-card:hover .add-profile-avatar {
   background: #5a5a5a;
   color: #ccc;
+}
+
+/* ── Edit pencil button on custom tile ── */
+.profile-edit-btn {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(20, 20, 20, 0.85);
+  border: 2px solid rgba(255,255,255,0.55);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  z-index: 2;
+  padding: 0;
+}
+
+.profile-edit-btn:hover {
+  background: var(--red);
+  border-color: var(--red);
+  transform: scale(1.12);
 }
 
 /* ── Avatar picker in modal ── */
