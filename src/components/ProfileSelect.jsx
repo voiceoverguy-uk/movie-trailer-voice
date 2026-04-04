@@ -21,7 +21,7 @@ const TILE_COLORS = [
 ];
 
 const STORAGE_KEY = 'mtv_custom_profile';
-const NAME_PATTERN = /^[a-zA-Z\s\-']+$/;
+const NAME_PATTERN = /^[a-zA-Z\-']+$/;
 
 function pickThreeUniqueNames(names) {
   const shuffled = [...names].sort(() => Math.random() - 0.5);
@@ -55,12 +55,12 @@ export default function ProfileSelect({ onSelect }) {
   const handleContinue = () => {
     const trimmed = inputName.trim();
     if (!trimmed) return;
-    if (trimmed.length > 16) {
-      setInputError('Name must be 16 characters or fewer.');
+    if (trimmed.length > 11) {
+      setInputError('First name must be 11 characters or fewer.');
       return;
     }
     if (!NAME_PATTERN.test(trimmed)) {
-      setInputError('Only letters, spaces, hyphens and apostrophes are allowed.');
+      setInputError('First names only — letters, hyphens and apostrophes allowed.');
       return;
     }
     localStorage.setItem(STORAGE_KEY, trimmed);
@@ -116,7 +116,7 @@ export default function ProfileSelect({ onSelect }) {
               type="text"
               placeholder="Your name"
               value={inputName}
-              maxLength={20}
+              maxLength={11}
               autoFocus
               onChange={(e) => { setInputName(e.target.value); setInputError(''); }}
               onKeyDown={handleKeyDown}
