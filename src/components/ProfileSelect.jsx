@@ -251,7 +251,8 @@ export default function ProfileSelect({ onSelect }) {
               value={inputName}
               maxLength={11}
               autoFocus
-              onChange={(e) => { setInputName(e.target.value); setInputError(''); }}
+              autoCapitalize="words"
+              onChange={(e) => { const v = e.target.value; setInputName(v ? v[0].toUpperCase() + v.slice(1) : v); setInputError(''); }}
               onKeyDown={handleKeyDown}
             />
             {inputError && <p className="profile-modal-error">{inputError}</p>}
