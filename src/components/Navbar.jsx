@@ -73,7 +73,7 @@ export default function Navbar({ onSwitchProfile }) {
             </button>
           )}
           <button
-            className="hamburger mobile-only"
+            className="hamburger"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
