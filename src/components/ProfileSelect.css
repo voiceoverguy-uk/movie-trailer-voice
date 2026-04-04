@@ -65,7 +65,7 @@
 }
 
 .profile-logo-wordmark {
-  height: 36px;
+  height: 72px;
   object-fit: contain;
   filter: drop-shadow(0 2px 12px rgba(0,0,0,0.8));
 }
@@ -424,7 +424,7 @@
   }
 
   .profile-logo-wordmark {
-    height: 28px;
+    height: 52px;
   }
 
   .profile-heading {
