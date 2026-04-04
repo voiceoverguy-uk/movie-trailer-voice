@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="container footer-content">
         <div className="footer-left">
-          <img src="/mtv-logo-transparent.png" alt="Movie Trailer Voice" className="footer-logo" />
+          <img src="/mtv-logo.jpg" alt="Movie Trailer Voice" className="footer-logo" />
         </div>
         <div className="footer-links">
           <a href="#about">About</a>
