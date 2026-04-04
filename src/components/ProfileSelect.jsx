@@ -1,14 +1,33 @@
 import React, { useState } from 'react';
 import './ProfileSelect.css';
 
-const profiles = [
-  { name: 'Epic', icon: 'E', color: 'linear-gradient(135deg, #1f1c2c, #928dab)' },
-  { name: 'Dark', icon: 'D', color: 'linear-gradient(135deg, #0f2027, #203a43, #2c5364)' },
-  { name: 'Action', icon: 'A', color: 'linear-gradient(135deg, #cb2d3e, #ef473a)' },
+const PROFILE_NAMES = [
+  "Tom", "Ryan", "Brad", "Leonardo", "Christian", "Morgan", "Denzel", "Samuel",
+  "Robert", "Al", "Jack", "Harrison", "Matt", "Ben", "Joaquin", "Keanu",
+  "Will", "Chris", "Daniel", "Cillian", "Colin", "Hugh", "Russell", "Stanley",
+  "Steven", "Martin", "Quentin", "Ridley", "Alfred", "Francis", "James", "Peter",
+  "George", "Ron", "Clint", "Katharine", "Audrey", "Grace", "Marilyn", "Meryl",
+  "Julia", "Sandra", "Nicole", "Kate", "Emma", "Emily", "Scarlett", "Natalie",
+  "Charlize", "Angelina", "Cate", "Jodie", "Helen", "Olivia", "Viola", "Frances",
+  "Greta", "Sofia", "Patty", "Nora", "Jane", "Barbra", "Ava", "Drew", "Cameron",
+  "Sigourney", "Salma", "Rachel", "Keira", "Saoirse", "Margot", "Zendaya",
+  "Florence", "Dakota", "Reese",
 ];
+
+const TILE_COLORS = [
+  'linear-gradient(135deg, #1f1c2c, #928dab)',
+  'linear-gradient(135deg, #0f2027, #203a43, #2c5364)',
+  'linear-gradient(135deg, #cb2d3e, #ef473a)',
+];
+
+function pickThreeUniqueNames(names) {
+  const shuffled = [...names].sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, 3);
+}
 
 export default function ProfileSelect({ onSelect }) {
   const [fading, setFading] = useState(false);
+  const [selectedNames] = useState(() => pickThreeUniqueNames(PROFILE_NAMES));
 
   const handleSelect = (profileName) => {
     setFading(true);
@@ -26,16 +45,16 @@ export default function ProfileSelect({ onSelect }) {
       <div className="profile-select-content">
         <h1 className="profile-heading">What You Watching?</h1>
         <div className="profiles-row">
-          {profiles.map((p, idx) => (
+          {selectedNames.map((name, idx) => (
             <div
-              key={p.name}
+              key={name}
               className={`profile-card slide-up slide-up-delay-${idx}`}
-              onClick={() => handleSelect(p.name)}
+              onClick={() => handleSelect(name)}
             >
-              <div className="profile-avatar" style={{ background: p.color }}>
-                <span className="display-font profile-icon">{p.icon}</span>
+              <div className="profile-avatar" style={{ background: TILE_COLORS[idx] }}>
+                <span className="display-font profile-icon">{name[0]}</span>
               </div>
-              <span className="profile-name">{p.name}</span>
+              <span className="profile-name">{name}</span>
             </div>
           ))}
 

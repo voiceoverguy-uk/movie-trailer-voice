@@ -1,0 +1,101 @@
+Please update the “Who’s Watching?” splash screen so that the profile names under the three visible profile tiles are chosen dynamically from a fixed list of 75 names every time the page loads.
+
+Important requirements:
+- Keep the current visual layout and styling of the splash screen exactly as it is unless needed for this feature
+- Do not change the tile colours, sizes, spacing, or animations
+- Do not change the “Movie Trailer Voice” branding at the top
+- Replace the current fixed labels under the three visible profile tiles with random names from the list below
+- On each fresh page load, pick 3 different names at random from the list
+- The three names must always be unique on that load
+- Do not show duplicates
+- Keep the fourth tile as the “Add Profile” tile exactly as it is now
+- Only the three actual profile names should randomise
+- The single-letter avatar initials on the tiles should also update to match the chosen names, using the first letter of each selected name
+- The randomisation should happen once on initial page load only, not continuously re-roll during re-renders
+- Make the implementation clean and easy to edit later
+
+Use this exact names array:
+
+[
+  "Tom",
+  "Ryan",
+  "Brad",
+  "Leonardo",
+  "Christian",
+  "Morgan",
+  "Denzel",
+  "Samuel",
+  "Robert",
+  "Al",
+  "Jack",
+  "Harrison",
+  "Matt",
+  "Ben",
+  "Joaquin",
+  "Keanu",
+  "Will",
+  "Chris",
+  "Daniel",
+  "Cillian",
+  "Colin",
+  "Hugh",
+  "Russell",
+  "Stanley",
+  "Steven",
+  "Martin",
+  "Quentin",
+  "Ridley",
+  "Alfred",
+  "Francis",
+  "James",
+  "Peter",
+  "George",
+  "Ron",
+  "Clint",
+  "Katharine",
+  "Audrey",
+  "Grace",
+  "Marilyn",
+  "Meryl",
+  "Julia",
+  "Sandra",
+  "Nicole",
+  "Kate",
+  "Emma",
+  "Emily",
+  "Scarlett",
+  "Natalie",
+  "Charlize",
+  "Angelina",
+  "Cate",
+  "Jodie",
+  "Helen",
+  "Olivia",
+  "Viola",
+  "Frances",
+  "Greta",
+  "Sofia",
+  "Patty",
+  "Nora",
+  "Jane",
+  "Barbra",
+  "Ava",
+  "Drew",
+  "Cameron",
+  "Sigourney",
+  "Salma",
+  "Rachel",
+  "Keira",
+  "Saoirse",
+  "Margot",
+  "Zendaya",
+  "Florence",
+  "Dakota",
+  "Reese"
+]
+
+Implementation preference:
+- Put the names list in a clearly named constant
+- Create a small helper function that shuffles or randomly selects 3 unique names
+- Initialise the selected names in state only once when the splash screen mounts
+- Keep the code simple and robust
