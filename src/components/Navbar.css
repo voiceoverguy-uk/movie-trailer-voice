@@ -161,7 +161,7 @@
 .navbar-profile-avatar {
   width: 32px;
   height: 32px;
-  border-radius: 50%;
+  border-radius: 5px;
   background: linear-gradient(135deg, #6a3093, #a044ff);
   display: flex;
   align-items: center;

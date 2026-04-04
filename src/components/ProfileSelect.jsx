@@ -70,9 +70,13 @@ export default function ProfileSelect({ onSelect }) {
   }, [timeLeft, modalOpen, fading, handleSelect, displayedProfiles]);
 
   const openModal = () => {
+    const existingAvatarSrc = localStorage.getItem(AVATAR_KEY);
+    const preselected = existingAvatarSrc
+      ? AVATARS.find(av => av.src === existingAvatarSrc) ?? null
+      : null;
     setInputName('');
     setInputError('');
-    setSelectedAvatar(null);
+    setSelectedAvatar(preselected);
     setModalOpen(true);
   };
 
