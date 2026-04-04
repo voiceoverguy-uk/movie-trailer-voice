@@ -8,7 +8,8 @@
   overflow: visible;
   transition: transform 0.3s ease;
   z-index: 1;
-  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
 }
 
 .video-card-inner {

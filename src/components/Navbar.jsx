@@ -20,9 +20,8 @@ const buildIndex = () => {
 const SEARCH_INDEX = buildIndex();
 
 export default function Navbar({ selectedProfile, onSwitchProfile }) {
-  const [scrolled, setScrolled]           = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen]   = useState(false);
+  const [scrolled, setScrolled]         = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const [searchOpen, setSearchOpen]       = useState(false);
   const [searchQuery, setSearchQuery]     = useState('');
 
@@ -95,7 +94,6 @@ export default function Navbar({ selectedProfile, onSwitchProfile }) {
       void cardEl.offsetWidth;
       cardEl.classList.add('clip-highlight');
       setTimeout(() => cardEl.classList.remove('clip-highlight'), 2000);
-      setTimeout(() => window.open(clip.url, '_blank', 'noopener,noreferrer'), 400);
     } else if (rowEl) {
       rowEl.scrollIntoView({ behavior: 'smooth' });
     }
@@ -247,29 +245,7 @@ export default function Navbar({ selectedProfile, onSwitchProfile }) {
             </div>
           )}
 
-          {/* ── Hamburger ── */}
-          <button
-            className="hamburger"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            <div className={`hamburger-line ${mobileMenuOpen ? 'open' : ''}`}></div>
-            <div className={`hamburger-line ${mobileMenuOpen ? 'open' : ''}`}></div>
-            <div className={`hamburger-line ${mobileMenuOpen ? 'open' : ''}`}></div>
-          </button>
         </div>
-      </div>
-
-      <div className={`mobile-drawer ${mobileMenuOpen ? 'open' : ''}`}>
-        <ul className="mobile-links">
-          {navLinks.map((link) => (
-            <li key={link.name}>
-              <a href={link.href} onClick={() => setMobileMenuOpen(false)}>
-                {link.name}
-              </a>
-            </li>
-          ))}
-        </ul>
       </div>
     </nav>
   );
