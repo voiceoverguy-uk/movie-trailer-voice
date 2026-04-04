@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { AVATARS } from '../data/avatars';
-import { heroClips, getHeroThumbnail, getHeroThumbnailFallback } from '../data/videos';
+import { heroClips } from '../data/videos';
 import './ProfileSelect.css';
 
 const PROFILE_NAMES = [
@@ -163,13 +163,7 @@ export default function ProfileSelect({ onSelect }) {
           {heroClipPair.map((clip) => (
             <img
               key={clip.id}
-              src={getHeroThumbnail(clip.url)}
-              onLoad={(e) => {
-                if (e.target.naturalWidth <= 120) {
-                  e.target.src = getHeroThumbnailFallback(clip.url);
-                }
-              }}
-              onError={(e) => { e.target.onerror = null; e.target.src = clip.heroImage; }}
+              src={clip.heroImage}
               alt=""
               className="profile-hero-img"
               aria-hidden="true"
