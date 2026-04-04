@@ -218,22 +218,15 @@
 }
 
 .avatar-picker {
-  display: flex;
-  gap: 0.5rem;
-  overflow-x: auto;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.6rem;
   width: 100%;
-  padding-bottom: 4px;
-  scrollbar-width: none;
-}
-
-.avatar-picker::-webkit-scrollbar {
-  display: none;
 }
 
 .avatar-option {
-  flex-shrink: 0;
-  width: 52px;
-  height: 52px;
+  width: 100%;
+  aspect-ratio: 1;
   border-radius: 50%;
   overflow: hidden;
   border: 3px solid transparent;
@@ -279,7 +272,7 @@
   border-radius: 10px;
   padding: 2.5rem 2rem;
   width: 100%;
-  max-width: 380px;
+  max-width: 560px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -386,9 +379,12 @@
     height: 100px;
   }
 
-  .avatar-option {
-    width: 44px;
-    height: 44px;
+  .avatar-picker {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .profile-modal {
+    margin: 1rem;
   }
 
   .profile-icon {
