@@ -152,6 +152,10 @@
   display: flex;
   align-items: center;
   gap: 0.6rem;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
 }
 
 .navbar-profile-avatar {
@@ -195,6 +199,7 @@
   padding: 0;
   transition: color 0.2s ease;
   line-height: 1.2;
+  display: block;
 }
 
 .navbar-profile-clear:hover {

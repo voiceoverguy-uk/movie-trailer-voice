@@ -3,7 +3,7 @@ import './Navbar.css';
 
 const STORAGE_KEY = 'mtv_custom_profile';
 
-export default function Navbar() {
+export default function Navbar({ onSwitchProfile }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [customProfile, setCustomProfile] = useState(() => localStorage.getItem(STORAGE_KEY));
@@ -50,15 +50,15 @@ export default function Navbar() {
 
         <div className="navbar-right">
           {customProfile && (
-            <div className="navbar-profile-badge">
+            <button className="navbar-profile-badge" onClick={onSwitchProfile} aria-label="Switch profile">
               <div className="navbar-profile-avatar">
                 <span className="navbar-profile-initial display-font">{customProfile[0].toUpperCase()}</span>
               </div>
               <div className="navbar-profile-info">
                 <span className="navbar-profile-name">{customProfile}</span>
-                <button className="navbar-profile-clear desktop-only" onClick={clearProfile}>Not you?</button>
+                <span className="navbar-profile-clear desktop-only" role="button" tabIndex={0} onClick={(e) => { e.stopPropagation(); clearProfile(); }}>Not you?</span>
               </div>
-            </div>
+            </button>
           )}
           <button
             className="hamburger mobile-only"

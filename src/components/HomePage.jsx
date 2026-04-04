@@ -21,7 +21,7 @@ function shuffledRow(row) {
   return { ...row, videos: shuffle(row.videos) };
 }
 
-export default function HomePage({ selectedProfile }) {
+export default function HomePage({ selectedProfile, onSwitchProfile }) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -37,7 +37,7 @@ export default function HomePage({ selectedProfile }) {
 
   return (
     <div className="home-page fade-in">
-      <Navbar />
+      <Navbar onSwitchProfile={onSwitchProfile} />
       <HeroCarousel heroClips={heroClips} initialIndex={initialHeroIndex} />
       <div className="main-content">
         <VideoRow id="trailers" row={rows.trailers} />

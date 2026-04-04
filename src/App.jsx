@@ -9,5 +9,5 @@ export default function App() {
     return <ProfileSelect onSelect={setSelectedProfile} />;
   }
 
-  return <HomePage selectedProfile={selectedProfile} />;
+  return <HomePage selectedProfile={selectedProfile} onSwitchProfile={() => setSelectedProfile(null)} />;
 }
