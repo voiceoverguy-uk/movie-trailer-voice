@@ -15,7 +15,7 @@ export default function Footer() {
         </div>
         <div className="footer-right">
           <a href="https://www.voiceoverguy.co.uk" target="_blank" rel="noopener noreferrer" className="footer-v-link" aria-label="VoiceoverGuy website">
-            <img src="/v-logo.jpg" alt="VoiceoverGuy" className="footer-v-logo" />
+            <img src="/v-logo-transparent.png" alt="VoiceoverGuy" className="footer-v-logo" />
           </a>
         </div>
       </div>
