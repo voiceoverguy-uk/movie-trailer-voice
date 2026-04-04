@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Navbar.css';
 import { movieTrailerRow, gameTrailersRow, bMovieRow, fullCollectionRow } from '../data/videos';
 
@@ -95,6 +95,7 @@ export default function Navbar({ selectedProfile, onSwitchProfile }) {
       void cardEl.offsetWidth;
       cardEl.classList.add('clip-highlight');
       setTimeout(() => cardEl.classList.remove('clip-highlight'), 2000);
+      setTimeout(() => window.open(clip.url, '_blank', 'noopener,noreferrer'), 400);
     } else if (rowEl) {
       rowEl.scrollIntoView({ behavior: 'smooth' });
     }
