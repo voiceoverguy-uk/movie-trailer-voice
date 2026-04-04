@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { getHeroThumbnail, getHeroThumbnailFallback } from '../data/videos';
+import { getThumbnail } from '../data/videos';
 import './HeroCarousel.css';
 
 export default function HeroCarousel({ heroClips, initialIndex }) {
@@ -21,20 +21,12 @@ export default function HeroCarousel({ heroClips, initialIndex }) {
   return (
     <div className="hero-carousel">
       {heroClips.map((clip, idx) => {
-        const bgImg = getHeroThumbnail(clip.url);
-        const fallbackImg = getHeroThumbnailFallback(clip.url);
+        const bgImg = clip.heroImage || getThumbnail(clip.url);
         return (
-          <div 
-            key={clip.id} 
+          <div
+            key={clip.id}
             className={`hero-slide ${idx === currentIndex ? 'active' : ''}`}
             style={{ backgroundImage: `url(${bgImg})` }}
-            ref={el => {
-              if (el && idx === currentIndex) {
-                const img = new Image();
-                img.onerror = () => { el.style.backgroundImage = `url(${fallbackImg})`; };
-                img.src = bgImg;
-              }
-            }}
           >
             <div className="hero-overlay">
               <div className="hero-content container slide-up">
@@ -76,8 +68,8 @@ export default function HeroCarousel({ heroClips, initialIndex }) {
 
       <div className="hero-dots">
         {heroClips.map((_, idx) => (
-          <button 
-            key={idx} 
+          <button
+            key={idx}
             className={`hero-dot ${idx === currentIndex ? 'active' : ''}`}
             onClick={() => setCurrentIndex(idx)}
             aria-label={`Go to slide ${idx + 1}`}

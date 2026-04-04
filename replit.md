@@ -44,7 +44,8 @@ npm run build  # production build
 - **Brand colour**: `#e50914` (VoiceoverGuy red) – not Netflix red, branded separately
 - **Accent**: Dark near-black backgrounds (`#0a0a0a` / `#141414`)
 - **Typography**: Bebas Neue for all headings/display, Inter for body text
-- **Thumbnails**: YouTube `hqdefault` quality for cards (always available); `maxresdefault` for hero with `sddefault` fallback
+- **Hero images**: Custom WebP images in `public/heroes/` — no dependency on YouTube thumbnails for the hero carousel. Each hero clip has a `heroImage` field; the carousel falls back to `hqdefault` YouTube thumbnail if no `heroImage` is set
+- **Card thumbnails**: YouTube `hqdefault` quality (always available for any video)
 - **Profile → Hero mapping**: Each profile tile highlights a different hero clip (`profileHeroMap` in `videos.js`)
 - **No CMS or database** – all content is hardcoded in `src/data/videos.js`
 

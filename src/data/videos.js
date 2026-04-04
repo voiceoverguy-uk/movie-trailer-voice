@@ -26,6 +26,7 @@ export const heroClips = [
     url: 'https://www.youtube.com/watch?v=z6WhxrAwfWw',
     genre: 'Game Trailer',
     profile: 'Epic',
+    heroImage: '/heroes/good-game-empire.webp',
   },
   {
     id: 'movie-trailer-voice-in-action',
@@ -34,6 +35,7 @@ export const heroClips = [
     url: 'https://www.youtube.com/watch?v=bcCpLnX-1ck',
     genre: 'Trailer',
     profile: 'Dark',
+    heroImage: '/heroes/movie-trailer-voice-in-action.webp',
   },
   {
     id: 'dragon-city-trailer',
@@ -42,6 +44,7 @@ export const heroClips = [
     url: 'https://www.youtube.com/watch?v=ZtkYHKpKomM',
     genre: 'Game Trailer',
     profile: 'Action',
+    heroImage: '/heroes/dragon-city.webp',
   },
   {
     id: 'minecraft-beginners-handbook',
@@ -50,6 +53,7 @@ export const heroClips = [
     url: 'https://www.youtube.com/watch?v=embrh2Y5VjI',
     genre: 'Trailer',
     profile: 'Spoof',
+    heroImage: '/heroes/minecraft-beginners-handbook.webp',
   },
 ];
 
