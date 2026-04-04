@@ -88,6 +88,38 @@ export const movieTrailerRow = {
   ],
 };
 
+export const bMovieRow = {
+  id: 'b-movie',
+  title: 'B-Movie Trailers',
+  clips: [
+    { title: 'B-Movie Trailer Voice', url: 'https://www.youtube.com/watch?v=bTUlbDBdT6A', genre: 'Parody' },
+    { title: 'Rocket & Groot B-Movie Voice', url: 'https://www.youtube.com/watch?v=lw3_DUx5jrk', genre: 'Parody' },
+  ],
+};
+
+export const gameTrailersRow = {
+  id: 'game-trailers',
+  title: 'Game Trailers',
+  clips: [
+    { title: 'Good Game Empire', url: 'https://www.youtube.com/watch?v=z6WhxrAwfWw', genre: 'Game Trailer' },
+    { title: 'Walking Dead – No Man\'s Land', url: 'https://www.youtube.com/watch?v=hZfE57Wdeew', genre: 'Game Trailer' },
+    { title: 'Prison Architect Trailer', url: 'https://www.youtube.com/watch?v=dABtGif6pmE', genre: 'Game Trailer' },
+    { title: 'Dragon City Trailer', url: 'https://www.youtube.com/watch?v=ZtkYHKpKomM', genre: 'Game Trailer' },
+    { title: 'Turtle Strike Game Trailer', url: 'https://www.youtube.com/watch?v=IEqODwRGQig', genre: 'Game Trailer' },
+    { title: 'Circus Penarium Game Trailer', url: 'https://www.youtube.com/watch?v=zxxR7tENfcE', genre: 'Game Trailer' },
+    { title: 'Robocide Trailer', url: 'https://www.youtube.com/watch?v=7PAXKApMYy8', genre: 'Game Trailer' },
+    { title: 'Kings Road Trailer', url: 'https://www.youtube.com/watch?v=Af5szC15B_8', genre: 'Game Trailer' },
+    { title: 'Land of Eyas', url: 'https://www.youtube.com/watch?v=439KyoB033w', genre: 'Game Trailer' },
+    { title: 'This War of Mine Trailer', url: 'https://www.youtube.com/watch?v=z4KMUa14NfM', genre: 'Game Trailer' },
+    { title: 'Winterstate Trailer Voice', url: 'https://www.youtube.com/watch?v=FpXaS3fvggI', genre: 'Game Trailer' },
+    { title: 'The Escapists Game Trailer', url: 'https://www.youtube.com/watch?v=yq3bttMIbuI', genre: 'Game Trailer' },
+    { title: 'War Friends Army Voice', url: 'https://www.youtube.com/watch?v=-rAockr9los', genre: 'Game Trailer' },
+    { title: 'WORMS WMD Game Trailer', url: 'https://www.youtube.com/watch?v=ttcUCCYa7Uk', genre: 'Game Trailer' },
+    { title: 'MMX Hill Climb Game Trailer', url: 'https://www.youtube.com/watch?v=17XTUByi28Q', genre: 'Game Trailer' },
+    { title: 'Farm Heroes Saga', url: 'https://www.youtube.com/watch?v=7QXZdT4y0uI', genre: 'Game Trailer' },
+  ],
+};
+
 export const otherSuggestionsRow = {
   id: 'other-suggestions',
   title: 'Other Suggestions',
