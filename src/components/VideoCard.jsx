@@ -19,7 +19,6 @@ export default function VideoCard({ clip }) {
       </div>
       <div className="video-card-caption">
         <h3 className="video-card-title">{clip.title}</h3>
-        {clip.genre && <span className="video-card-genre">{clip.genre}</span>}
       </div>
     </a>
   );
