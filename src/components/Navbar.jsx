@@ -85,8 +85,19 @@ export default function Navbar({ selectedProfile, onSwitchProfile }) {
   const handleSearchResultClick = (clip) => {
     setSearchOpen(false);
     setSearchQuery('');
-    const el = document.getElementById(clip.rowId);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+
+    const rowEl  = document.getElementById(clip.rowId);
+    const cardEl = document.querySelector(`[data-clip-url="${CSS.escape(clip.url)}"]`);
+
+    if (cardEl) {
+      cardEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      cardEl.classList.remove('clip-highlight');
+      void cardEl.offsetWidth;
+      cardEl.classList.add('clip-highlight');
+      setTimeout(() => cardEl.classList.remove('clip-highlight'), 2000);
+    } else if (rowEl) {
+      rowEl.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const handleManageProfile = () => {

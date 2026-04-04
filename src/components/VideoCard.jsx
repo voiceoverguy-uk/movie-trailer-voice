@@ -6,7 +6,7 @@ export default function VideoCard({ clip }) {
   const thumbnail = getThumbnail(clip.url);
 
   return (
-    <a href={clip.url} target="_blank" rel="noopener noreferrer" className="video-card">
+    <a href={clip.url} target="_blank" rel="noopener noreferrer" className="video-card" data-clip-url={clip.url}>
       <div className="video-card-inner">
         <img src={thumbnail} alt={clip.title} className="video-card-img" loading="lazy" />
         <div className="video-card-overlay">
