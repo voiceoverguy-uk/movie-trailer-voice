@@ -73,6 +73,15 @@ export const heroClips = [
     profile: 'Mystery',
     heroImage: '/heroes/hide-the-corpse.jpg',
   },
+  {
+    id: 'hammerman-boom-beach',
+    title: 'Hammerman Strikes Back',
+    description: 'Boom Beach. Hammerman strikes back — and the voice of doom strikes first.',
+    url: 'https://www.youtube.com/watch?v=JId2ODYrXq4',
+    genre: 'Game Trailer',
+    profile: 'Commander',
+    heroImage: '/heroes/hammerman-boom-beach.webp',
+  },
 ];
 
 export const profileHeroMap = {
@@ -82,6 +91,7 @@ export const profileHeroMap = {
   Spoof: 3,
   Circus: 4,
   Mystery: 5,
+  Commander: 6,
 };
 
 export const movieTrailerRow = {
