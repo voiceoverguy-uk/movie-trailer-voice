@@ -151,6 +151,7 @@ export const gameTrailersRow = {
     { title: 'Hide the Corpse', url: 'https://www.youtube.com/watch?v=I0LcSnCasGY', genre: 'Game Trailer' },
     { title: 'Smash Bandits', url: 'https://www.youtube.com/watch?v=4hHuiPqQkvs', genre: 'Game Trailer' },
     { title: '13 Dead End Drive', url: 'https://www.youtube.com/watch?v=2mqiqOcM7t0', genre: 'Game Trailer' },
+    { title: "Hammerman's Heinous Hot Tub", url: 'https://www.youtube.com/watch?v=L6_oKwstsSU', genre: 'Game Trailer' },
   ],
 };
 
