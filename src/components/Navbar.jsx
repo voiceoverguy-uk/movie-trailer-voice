@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 
 const STORAGE_KEY = 'mtv_custom_profile';
+const AVATAR_KEY  = 'mtv_custom_avatar';
 
 export default function Navbar({ onSwitchProfile }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [customProfile, setCustomProfile] = useState(() => localStorage.getItem(STORAGE_KEY));
+  const [customAvatar,  setCustomAvatar]  = useState(() => localStorage.getItem(AVATAR_KEY));
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -15,14 +17,19 @@ export default function Navbar({ onSwitchProfile }) {
   }, []);
 
   useEffect(() => {
-    const handleStorage = () => setCustomProfile(localStorage.getItem(STORAGE_KEY));
+    const handleStorage = () => {
+      setCustomProfile(localStorage.getItem(STORAGE_KEY));
+      setCustomAvatar(localStorage.getItem(AVATAR_KEY));
+    };
     window.addEventListener('storage', handleStorage);
     return () => window.removeEventListener('storage', handleStorage);
   }, []);
 
   const clearProfile = () => {
     localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(AVATAR_KEY);
     setCustomProfile(null);
+    setCustomAvatar(null);
   };
 
   const navLinks = [
@@ -52,11 +59,20 @@ export default function Navbar({ onSwitchProfile }) {
           {customProfile && (
             <button className="navbar-profile-badge" onClick={onSwitchProfile} aria-label="Switch profile">
               <div className="navbar-profile-avatar">
-                <span className="navbar-profile-initial display-font">{customProfile[0].toUpperCase()}</span>
+                {customAvatar ? (
+                  <img src={customAvatar} alt={customProfile} className="navbar-profile-avatar-img" />
+                ) : (
+                  <span className="navbar-profile-initial display-font">{customProfile[0].toUpperCase()}</span>
+                )}
               </div>
               <div className="navbar-profile-info">
                 <span className="navbar-profile-name">{customProfile}</span>
-                <span className="navbar-profile-clear desktop-only" role="button" tabIndex={0} onClick={(e) => { e.stopPropagation(); clearProfile(); }}>Not you?</span>
+                <span
+                  className="navbar-profile-clear desktop-only"
+                  role="button"
+                  tabIndex={0}
+                  onClick={(e) => { e.stopPropagation(); clearProfile(); }}
+                >Not you?</span>
               </div>
             </button>
           )}
