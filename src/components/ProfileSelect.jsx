@@ -65,16 +65,16 @@ export default function ProfileSelect({ onSelect }) {
   const [heroClipPair] = useState(() => pickTwoHeroClips());
 
   /* ── Auto-advance timer ── */
-  const handleSelect = useCallback((profileName) => {
+  const handleSelect = useCallback((profile) => {
     setFading(true);
-    setTimeout(() => onSelect(profileName), 800);
+    setTimeout(() => onSelect(profile), 800);
   }, [onSelect]);
 
   useEffect(() => {
     if (modalOpen || fading) return;
     if (timeLeft <= 0) {
       const first = customProfile ?? celebProfiles[0];
-      handleSelect(first.name);
+      handleSelect(first);
       return;
     }
     const id = setTimeout(() => setTimeLeft(t => t - 1), 1000);
@@ -138,7 +138,7 @@ export default function ProfileSelect({ onSelect }) {
     } else {
       /* Create: navigate straight into the site */
       closeModal();
-      handleSelect(trimmed);
+      handleSelect({ name: trimmed, avatarSrc });
     }
   };
 
@@ -184,7 +184,7 @@ export default function ProfileSelect({ onSelect }) {
             <div
               key={profile.name}
               className={`profile-card slide-up slide-up-delay-${idx}`}
-              onClick={() => handleSelect(profile.name)}
+              onClick={() => handleSelect(profile)}
             >
               <div className="profile-avatar-wrap">
                 <div className="profile-avatar">

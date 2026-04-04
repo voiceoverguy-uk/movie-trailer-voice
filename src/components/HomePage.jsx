@@ -26,7 +26,8 @@ export default function HomePage({ selectedProfile, onSwitchProfile }) {
     window.scrollTo(0, 0);
   }, []);
 
-  const initialHeroIndex = profileHeroMap[selectedProfile] !== undefined ? profileHeroMap[selectedProfile] : 0;
+  const profileName = selectedProfile?.name ?? selectedProfile ?? '';
+  const initialHeroIndex = profileHeroMap[profileName] !== undefined ? profileHeroMap[profileName] : 0;
 
   const rows = useMemo(() => ({
     trailers: shuffledRow(movieTrailerRow),
@@ -37,7 +38,7 @@ export default function HomePage({ selectedProfile, onSwitchProfile }) {
 
   return (
     <div className="home-page fade-in">
-      <Navbar onSwitchProfile={onSwitchProfile} />
+      <Navbar selectedProfile={selectedProfile} onSwitchProfile={onSwitchProfile} />
       <HeroCarousel heroClips={heroClips} initialIndex={initialHeroIndex} />
       <div className="main-content">
         <VideoRow id="trailers" row={rows.trailers} />
