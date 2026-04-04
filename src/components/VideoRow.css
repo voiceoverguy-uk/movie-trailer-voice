@@ -35,7 +35,7 @@
   transform: translateY(-50%);
   width: 72px;
   height: calc(100% - 2rem);
-  background: rgba(10, 10, 10, 0.7);
+  background: rgba(10, 10, 10, 0.25);
   color: white;
   display: flex;
   align-items: center;
@@ -43,7 +43,7 @@
   z-index: 20;
   opacity: 0;
   transition: opacity 0.25s ease, background 0.25s ease;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(2px);
   border: none;
   cursor: pointer;
 }
@@ -63,7 +63,7 @@
 }
 
 .row-nav-arrow:hover {
-  background: rgba(10, 10, 10, 0.92);
+  background: rgba(10, 10, 10, 0.45);
   color: white;
 }
 
