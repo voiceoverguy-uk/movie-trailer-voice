@@ -64,11 +64,10 @@
 }
 
 .mobile-only {
-  display: none !important;
+  display: none;
 }
 
 .hamburger {
-  display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 24px;
