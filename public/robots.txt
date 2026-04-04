@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://movie-trailer-voice.vercel.app/sitemap.xml
