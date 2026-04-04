@@ -44,7 +44,7 @@ export default function Navbar({ onSwitchProfile }) {
       <div className="navbar-container">
         <div className="navbar-left">
           <a href="#" className="navbar-logo">
-            <img src="/mtv-logo.jpg" alt="Movie Trailer Voice" className="navbar-wordmark" />
+            <img src="/mtv-logo-transparent.png" alt="Movie Trailer Voice" className="navbar-wordmark" />
           </a>
           <ul className="navbar-links desktop-only">
             {navLinks.map((link) => (
