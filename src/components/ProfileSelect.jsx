@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { AVATARS } from '../data/avatars';
+import { heroClips } from '../data/videos';
 import './ProfileSelect.css';
 
 const PROFILE_NAMES = [
@@ -29,13 +30,20 @@ function pickUniqueAvatars(count) {
   return [...AVATARS].sort(() => Math.random() - 0.5).slice(0, count);
 }
 
+function pickTwoHeroImages() {
+  const shuffled = [...heroClips].sort(() => Math.random() - 0.5);
+  return [shuffled[0].heroImage, shuffled[1].heroImage];
+}
+
 export default function ProfileSelect({ onSelect }) {
-  const [fading, setFading] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [inputName, setInputName] = useState('');
-  const [inputError, setInputError] = useState('');
+  const [fading, setFading]               = useState(false);
+  const [modalOpen, setModalOpen]         = useState(false);
+  const [inputName, setInputName]         = useState('');
+  const [inputError, setInputError]       = useState('');
   const [selectedAvatar, setSelectedAvatar] = useState(null);
-  const [timeLeft, setTimeLeft] = useState(AUTO_SECONDS);
+  const [timeLeft, setTimeLeft]           = useState(AUTO_SECONDS);
+
+  const [heroImages] = useState(() => pickTwoHeroImages());
 
   const [displayedProfiles] = useState(() => {
     const savedName   = localStorage.getItem(STORAGE_KEY);
@@ -117,11 +125,21 @@ export default function ProfileSelect({ onSelect }) {
   const savedName = localStorage.getItem(STORAGE_KEY);
 
   return (
-    <div className={`profile-select-container ${fading ? 'fade-out' : 'fade-in'}`}>
-      <div className="profile-top-bar">
-        <img src="/mtv-logo-transparent.png" alt="Movie Trailer Voice" className="profile-logo-wordmark" />
+    <div className={`profile-select-container ${fading ? 'fade-out' : ''}`}>
+
+      {/* ── Cinematic hero backdrop ── */}
+      <div className="profile-hero">
+        <div className="profile-hero-images">
+          <img src={heroImages[0]} alt="" className="profile-hero-img" aria-hidden="true" />
+          <img src={heroImages[1]} alt="" className="profile-hero-img" aria-hidden="true" />
+        </div>
+        <div className="profile-hero-gradient" />
+        <div className="profile-hero-logo">
+          <img src="/mtv-logo-transparent.png" alt="Movie Trailer Voice" className="profile-logo-wordmark" />
+        </div>
       </div>
 
+      {/* ── Profile picker ── */}
       <div className="profile-select-content">
         <h1 className="profile-heading">What You Watching?</h1>
         <div className="profiles-row">
@@ -156,10 +174,12 @@ export default function ProfileSelect({ onSelect }) {
         </div>
       </div>
 
+      {/* ── Countdown bar ── */}
       <div className="auto-advance-bar">
         <div className="auto-advance-progress" style={{ width: `${progressPct}%` }} />
       </div>
 
+      {/* ── Add/Edit Profile modal ── */}
       {modalOpen && (
         <div className="profile-modal-backdrop" onClick={closeModal}>
           <div className="profile-modal" onClick={(e) => e.stopPropagation()}>
