@@ -50,13 +50,13 @@ export default function Navbar() {
 
         <div className="navbar-right">
           {customProfile && (
-            <div className="navbar-profile-badge desktop-only">
+            <div className="navbar-profile-badge">
               <div className="navbar-profile-avatar">
                 <span className="navbar-profile-initial display-font">{customProfile[0].toUpperCase()}</span>
               </div>
               <div className="navbar-profile-info">
                 <span className="navbar-profile-name">{customProfile}</span>
-                <button className="navbar-profile-clear" onClick={clearProfile}>Not you?</button>
+                <button className="navbar-profile-clear desktop-only" onClick={clearProfile}>Not you?</button>
               </div>
             </div>
           )}
