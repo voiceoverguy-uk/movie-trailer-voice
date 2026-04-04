@@ -145,12 +145,14 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.55);
+  border: 1px solid rgba(255,255,255,0.25);
   transition: all 0.2s ease;
 }
 
 .hero-dot.active {
   background: var(--red);
+  border-color: var(--red);
   transform: scale(1.2);
 }
 
