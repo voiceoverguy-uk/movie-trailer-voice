@@ -218,11 +218,13 @@ export default function ProfileSelect({ onSelect }) {
 
           {/* Add Profile tile */}
           <div className="profile-card add-profile-card slide-up slide-up-delay-3" onClick={openCreateModal}>
-            <div className="profile-avatar add-profile-avatar">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="square">
-                <line x1="12" y1="4" x2="12" y2="20"></line>
-                <line x1="4" y1="12" x2="20" y2="12"></line>
-              </svg>
+            <div className="profile-avatar">
+              <div className="add-profile-avatar">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="square">
+                  <line x1="12" y1="4" x2="12" y2="20"></line>
+                  <line x1="4" y1="12" x2="20" y2="12"></line>
+                </svg>
+              </div>
             </div>
             <span className="profile-name">Add Profile</span>
           </div>
