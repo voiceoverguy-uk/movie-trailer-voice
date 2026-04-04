@@ -55,6 +55,15 @@ export const heroClips = [
     profile: 'Spoof',
     heroImage: '/heroes/minecraft-beginners-handbook.webp',
   },
+  {
+    id: 'circus-penarium',
+    title: 'Circus Penarium',
+    description: 'Roll up, roll up. The big top gets the big voice treatment.',
+    url: 'https://www.youtube.com/watch?v=zxxR7tENfcE',
+    genre: 'Game Trailer',
+    profile: 'Circus',
+    heroImage: '/heroes/penarium.jpeg',
+  },
 ];
 
 export const profileHeroMap = {
@@ -62,6 +71,7 @@ export const profileHeroMap = {
   Dark: 1,
   Action: 2,
   Spoof: 3,
+  Circus: 4,
 };
 
 export const movieTrailerRow = {
