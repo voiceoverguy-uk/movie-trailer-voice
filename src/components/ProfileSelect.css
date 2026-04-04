@@ -119,6 +119,120 @@
   color: #ccc;
 }
 
+/* ── Modal ── */
+.profile-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 500;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.2s ease;
+}
+
+.profile-modal {
+  background: #1a1a1a;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.7);
+  animation: slideUp 0.25s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.profile-modal-title {
+  font-size: 1.5rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 0.5rem;
+  text-align: center;
+}
+
+.profile-modal-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: #2a2a2a;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.profile-modal-input:focus {
+  border-color: var(--red);
+}
+
+.profile-modal-input.has-error {
+  border-color: #ff6b6b;
+}
+
+.profile-modal-input::placeholder {
+  color: rgba(255,255,255,0.3);
+}
+
+.profile-modal-error {
+  color: #ff6b6b;
+  font-size: 0.8rem;
+  font-family: 'Inter', sans-serif;
+  margin: -0.25rem 0 0;
+  align-self: flex-start;
+}
+
+.profile-modal-btn {
+  width: 100%;
+  padding: 0.8rem;
+  background: var(--red);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, opacity 0.2s ease;
+  margin-top: 0.25rem;
+}
+
+.profile-modal-btn:hover:not(:disabled) {
+  background: #c4000f;
+}
+
+.profile-modal-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.profile-modal-cancel {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.45);
+  font-size: 0.85rem;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  padding: 0;
+}
+
+.profile-modal-cancel:hover {
+  color: var(--text);
+}
+
 @media (max-width: 768px) {
   .profile-avatar {
     width: 100px;

@@ -1,0 +1,39 @@
+Please add a custom profile feature to the existing “Who’s Watching?” splash screen and homepage.
+
+What I want:
+- Keep the current 3 random profile tiles plus the 4th “Add Profile” tile
+- When the user clicks “Add Profile”, open a small modal dialog instead of going straight through
+- The modal should feel clean, dark, and in keeping with the current Netflix-inspired UI
+- Modal title: Create Your Profile
+- Include:
+  - a single text input for the user’s name
+  - a Continue button
+  - a Cancel/close option
+- When the user enters their name and clicks Continue:
+  - save the name in localStorage
+  - generate the initial from the first character of their entered name
+  - close the splash screen and enter the main homepage as normal
+
+Homepage behaviour:
+- If a custom profile exists in localStorage, show a small profile badge on the homepage/navigation area
+- This should be a smaller version of the splash profile style:
+  - small square avatar tile with the initial
+  - the entered name shown underneath or beside it depending on screen size
+- Keep it subtle and polished, not oversized
+- Position it neatly in the top area, ideally on the right side of the navbar on desktop and sensibly on mobile
+- It should feel like a mini version of the streaming profile UI
+
+Rules:
+- Use localStorage only, no backend or database
+- Keep the existing design intact as much as possible
+- Maximum name length: 16 characters
+- Trim spaces from the start/end
+- Ignore empty submissions
+- Only allow sensible profile text input (letters, spaces, hyphens, apostrophes are fine)
+- Derive the avatar initial from the first letter of the saved name
+- If no custom profile is saved, do not show the mini profile on the homepage
+- Keep the Add Profile tile on the splash screen exactly as a trigger for this modal
+- Code should be clean, modular, and easy to edit later
+
+Optional nice touch if easy:
+- Add a tiny “Not you?” or “Clear profile” text link near the mini profile badge so the saved local profile can be removed

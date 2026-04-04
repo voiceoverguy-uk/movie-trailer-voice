@@ -20,6 +20,9 @@ const TILE_COLORS = [
   'linear-gradient(135deg, #cb2d3e, #ef473a)',
 ];
 
+const STORAGE_KEY = 'mtv_custom_profile';
+const NAME_PATTERN = /^[a-zA-Z\s\-']+$/;
+
 function pickThreeUniqueNames(names) {
   const shuffled = [...names].sort(() => Math.random() - 0.5);
   return shuffled.slice(0, 3);
@@ -28,12 +31,46 @@ function pickThreeUniqueNames(names) {
 export default function ProfileSelect({ onSelect }) {
   const [fading, setFading] = useState(false);
   const [selectedNames] = useState(() => pickThreeUniqueNames(PROFILE_NAMES));
+  const [modalOpen, setModalOpen] = useState(false);
+  const [inputName, setInputName] = useState('');
+  const [inputError, setInputError] = useState('');
 
   const handleSelect = (profileName) => {
     setFading(true);
-    setTimeout(() => {
-      onSelect(profileName);
-    }, 800);
+    setTimeout(() => onSelect(profileName), 800);
+  };
+
+  const openModal = () => {
+    setInputName('');
+    setInputError('');
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setInputName('');
+    setInputError('');
+  };
+
+  const handleContinue = () => {
+    const trimmed = inputName.trim();
+    if (!trimmed) return;
+    if (trimmed.length > 16) {
+      setInputError('Name must be 16 characters or fewer.');
+      return;
+    }
+    if (!NAME_PATTERN.test(trimmed)) {
+      setInputError('Only letters, spaces, hyphens and apostrophes are allowed.');
+      return;
+    }
+    localStorage.setItem(STORAGE_KEY, trimmed);
+    closeModal();
+    handleSelect(trimmed);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') handleContinue();
+    if (e.key === 'Escape') closeModal();
   };
 
   return (
@@ -58,7 +95,7 @@ export default function ProfileSelect({ onSelect }) {
             </div>
           ))}
 
-          <div className="profile-card add-profile-card slide-up slide-up-delay-3">
+          <div className="profile-card add-profile-card slide-up slide-up-delay-3" onClick={openModal}>
             <div className="profile-avatar add-profile-avatar">
               <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="square">
                 <line x1="12" y1="4" x2="12" y2="20"></line>
@@ -69,6 +106,35 @@ export default function ProfileSelect({ onSelect }) {
           </div>
         </div>
       </div>
+
+      {modalOpen && (
+        <div className="profile-modal-backdrop" onClick={closeModal}>
+          <div className="profile-modal" onClick={(e) => e.stopPropagation()}>
+            <h2 className="profile-modal-title">Create Your Profile</h2>
+            <input
+              className={`profile-modal-input ${inputError ? 'has-error' : ''}`}
+              type="text"
+              placeholder="Your name"
+              value={inputName}
+              maxLength={20}
+              autoFocus
+              onChange={(e) => { setInputName(e.target.value); setInputError(''); }}
+              onKeyDown={handleKeyDown}
+            />
+            {inputError && <p className="profile-modal-error">{inputError}</p>}
+            <button
+              className="profile-modal-btn"
+              onClick={handleContinue}
+              disabled={!inputName.trim()}
+            >
+              Continue
+            </button>
+            <button className="profile-modal-cancel" onClick={closeModal}>
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

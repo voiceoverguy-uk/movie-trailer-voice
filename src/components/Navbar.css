@@ -141,6 +141,81 @@
   color: var(--red);
 }
 
+/* ── Custom Profile Badge ── */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.navbar-profile-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.navbar-profile-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #6a3093, #a044ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.navbar-profile-initial {
+  font-size: 1.1rem;
+  color: white;
+  line-height: 1;
+}
+
+.navbar-profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.navbar-profile-name {
+  font-size: 0.8rem;
+  color: var(--text);
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.2;
+}
+
+.navbar-profile-clear {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.4);
+  font-size: 0.7rem;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s ease;
+  line-height: 1.2;
+}
+
+.navbar-profile-clear:hover {
+  color: var(--red);
+}
+
+.mobile-clear-profile {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.5);
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.mobile-clear-profile:hover {
+  color: var(--red);
+}
+
 @media (max-width: 768px) {
   .desktop-only {
     display: none;

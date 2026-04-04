@@ -1,17 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 
+const STORAGE_KEY = 'mtv_custom_profile';
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [customProfile, setCustomProfile] = useState(() => localStorage.getItem(STORAGE_KEY));
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    const handleStorage = () => setCustomProfile(localStorage.getItem(STORAGE_KEY));
+    window.addEventListener('storage', handleStorage);
+    return () => window.removeEventListener('storage', handleStorage);
+  }, []);
+
+  const clearProfile = () => {
+    localStorage.removeItem(STORAGE_KEY);
+    setCustomProfile(null);
+  };
 
   const navLinks = [
     { name: 'Trailers', href: '#trailers' },
@@ -35,8 +47,20 @@ export default function Navbar() {
             ))}
           </ul>
         </div>
+
         <div className="navbar-right">
-          <button 
+          {customProfile && (
+            <div className="navbar-profile-badge desktop-only">
+              <div className="navbar-profile-avatar">
+                <span className="navbar-profile-initial display-font">{customProfile[0].toUpperCase()}</span>
+              </div>
+              <div className="navbar-profile-info">
+                <span className="navbar-profile-name">{customProfile}</span>
+                <button className="navbar-profile-clear" onClick={clearProfile}>Not you?</button>
+              </div>
+            </div>
+          )}
+          <button
             className="hamburger mobile-only"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
@@ -47,20 +71,23 @@ export default function Navbar() {
           </button>
         </div>
       </div>
-      
-      {/* Mobile Drawer */}
+
       <div className={`mobile-drawer ${mobileMenuOpen ? 'open' : ''}`}>
         <ul className="mobile-links">
           {navLinks.map((link) => (
             <li key={link.name}>
-              <a 
-                href={link.href} 
-                onClick={() => setMobileMenuOpen(false)}
-              >
+              <a href={link.href} onClick={() => setMobileMenuOpen(false)}>
                 {link.name}
               </a>
             </li>
           ))}
+          {customProfile && (
+            <li>
+              <button className="mobile-clear-profile" onClick={() => { clearProfile(); setMobileMenuOpen(false); }}>
+                Not you, {customProfile}?
+              </button>
+            </li>
+          )}
         </ul>
       </div>
     </nav>
