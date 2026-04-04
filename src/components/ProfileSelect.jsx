@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { AVATARS } from '../data/avatars';
-import { heroClips } from '../data/videos';
+import { heroClips, getHeroThumbnail, getHeroThumbnailFallback } from '../data/videos';
 import './ProfileSelect.css';
 
 const PROFILE_NAMES = [
@@ -30,9 +30,8 @@ function pickUniqueAvatars(count) {
   return [...AVATARS].sort(() => Math.random() - 0.5).slice(0, count);
 }
 
-function pickTwoHeroImages() {
-  const shuffled = [...heroClips].sort(() => Math.random() - 0.5);
-  return [shuffled[0].heroImage, shuffled[1].heroImage];
+function pickTwoHeroClips() {
+  return [...heroClips].sort(() => Math.random() - 0.5).slice(0, 2);
 }
 
 export default function ProfileSelect({ onSelect }) {
@@ -43,7 +42,7 @@ export default function ProfileSelect({ onSelect }) {
   const [selectedAvatar, setSelectedAvatar] = useState(null);
   const [timeLeft, setTimeLeft]           = useState(AUTO_SECONDS);
 
-  const [heroImages] = useState(() => pickTwoHeroImages());
+  const [heroClipPair] = useState(() => pickTwoHeroClips());
 
   const [displayedProfiles] = useState(() => {
     const savedName   = localStorage.getItem(STORAGE_KEY);
@@ -130,8 +129,22 @@ export default function ProfileSelect({ onSelect }) {
       {/* ── Cinematic hero backdrop ── */}
       <div className="profile-hero">
         <div className="profile-hero-images">
-          <img src={heroImages[0]} alt="" className="profile-hero-img" aria-hidden="true" />
-          <img src={heroImages[1]} alt="" className="profile-hero-img" aria-hidden="true" />
+          {heroClipPair.map((clip) => (
+            <img
+              key={clip.id}
+              src={getHeroThumbnail(clip.url)}
+              onLoad={(e) => {
+                /* YouTube returns a 120×90 placeholder when maxresdefault is unavailable */
+                if (e.target.naturalWidth <= 120) {
+                  e.target.src = getHeroThumbnailFallback(clip.url);
+                }
+              }}
+              onError={(e) => { e.target.onerror = null; e.target.src = clip.heroImage; }}
+              alt=""
+              className="profile-hero-img"
+              aria-hidden="true"
+            />
+          ))}
         </div>
         <div className="profile-hero-gradient" />
         <div className="profile-hero-logo">
