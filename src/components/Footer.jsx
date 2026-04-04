@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="footer-links">
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
-          <a href="https://www.youtube.com/user/voiceoverguyharris" target="_blank" rel="noopener noreferrer">YouTube</a>
+          <a href="https://www.youtube.com/@VoiceoverGuy" target="_blank" rel="noopener noreferrer">YouTube</a>
         </div>
         <div className="footer-right">
           <a href="https://www.voiceoverguy.co.uk" target="_blank" rel="noopener noreferrer" className="footer-v-link" aria-label="VoiceoverGuy website">
