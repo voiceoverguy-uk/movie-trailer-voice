@@ -67,12 +67,6 @@ export default function Navbar({ onSwitchProfile }) {
               </div>
               <div className="navbar-profile-info">
                 <span className="navbar-profile-name">{customProfile}</span>
-                <span
-                  className="navbar-profile-clear desktop-only"
-                  role="button"
-                  tabIndex={0}
-                  onClick={(e) => { e.stopPropagation(); clearProfile(); }}
-                >Not you?</span>
               </div>
             </button>
           )}
@@ -97,13 +91,6 @@ export default function Navbar({ onSwitchProfile }) {
               </a>
             </li>
           ))}
-          {customProfile && (
-            <li>
-              <button className="mobile-clear-profile" onClick={() => { clearProfile(); setMobileMenuOpen(false); }}>
-                Not you, {customProfile}?
-              </button>
-            </li>
-          )}
         </ul>
       </div>
     </nav>

@@ -108,7 +108,8 @@
   z-index: 999;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-top: 20vh;
 }
 
 .mobile-drawer.open {
