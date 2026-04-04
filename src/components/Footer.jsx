@@ -13,6 +13,11 @@ export default function Footer() {
           <a href="#contact">Contact</a>
           <a href="https://www.youtube.com/@VoiceoverGuy" target="_blank" rel="noopener noreferrer">YouTube</a>
         </div>
+        <div className="footer-right">
+          <a href="https://www.voiceoverguy.co.uk" target="_blank" rel="noopener noreferrer" className="footer-v-link" aria-label="VoiceoverGuy website">
+            <img src="/v-logo.jpg" alt="VoiceoverGuy" className="footer-v-logo" />
+          </a>
+        </div>
       </div>
       <div className="footer-bottom">
         <p>© {new Date().getFullYear()} Guy Harris / Movie Trailer Voice. All rights reserved.</p>

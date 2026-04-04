@@ -50,6 +50,32 @@
   font-size: 0.8rem;
 }
 
+.footer-right {
+  display: flex;
+  align-items: center;
+}
+
+.footer-v-link {
+  display: block;
+  opacity: 0.7;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.footer-v-link:hover {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+.footer-v-logo {
+  height: 44px;
+  width: 44px;
+  object-fit: cover;
+  display: block;
+  border-radius: 6px;
+}
+
 @media (max-width: 600px) {
   .footer-content {
     flex-direction: column;

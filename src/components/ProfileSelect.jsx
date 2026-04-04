@@ -20,7 +20,6 @@ export default function ProfileSelect({ onSelect }) {
   return (
     <div className={`profile-select-container ${fading ? 'fade-out' : 'fade-in'}`}>
       <div className="profile-top-bar">
-        <img src="/v-logo.jpg" alt="Movie Trailer Voice" className="profile-logo-icon" />
         <img src="/mtv-logo.jpg" alt="Movie Trailer Voice" className="profile-logo-wordmark" />
       </div>
 
