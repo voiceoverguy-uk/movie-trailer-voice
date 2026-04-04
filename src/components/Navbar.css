@@ -224,6 +224,10 @@
     display: flex;
   }
 
+  .navbar-right {
+    align-items: flex-start;
+  }
+
   .navbar-profile-badge {
     flex-direction: column;
     align-items: center;
