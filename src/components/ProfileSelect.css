@@ -260,3 +260,20 @@
     padding: 1rem 1.5rem;
   }
 }
+
+/* ── Auto-advance countdown bar ── */
+.auto-advance-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 10;
+}
+
+.auto-advance-progress {
+  height: 100%;
+  background: var(--red);
+  transition: width 1s linear;
+}

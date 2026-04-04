@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './ProfileSelect.css';
 
 const PROFILE_NAMES = [
@@ -20,8 +20,10 @@ const TILE_COLORS = [
   'linear-gradient(135deg, #cb2d3e, #ef473a)',
 ];
 
+const CUSTOM_TILE_COLOR = 'linear-gradient(135deg, #6a3093, #a044ff)';
 const STORAGE_KEY = 'mtv_custom_profile';
 const NAME_PATTERN = /^[a-zA-Z\-']+$/;
+const AUTO_SECONDS = 10;
 
 function pickThreeUniqueNames(names) {
   const shuffled = [...names].sort(() => Math.random() - 0.5);
@@ -30,15 +32,37 @@ function pickThreeUniqueNames(names) {
 
 export default function ProfileSelect({ onSelect }) {
   const [fading, setFading] = useState(false);
-  const [selectedNames] = useState(() => pickThreeUniqueNames(PROFILE_NAMES));
   const [modalOpen, setModalOpen] = useState(false);
   const [inputName, setInputName] = useState('');
   const [inputError, setInputError] = useState('');
+  const [timeLeft, setTimeLeft] = useState(AUTO_SECONDS);
 
-  const handleSelect = (profileName) => {
+  const [displayedNames] = useState(() => {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    const randoms = pickThreeUniqueNames(PROFILE_NAMES);
+    if (saved) {
+      const others = randoms.filter(n => n.toLowerCase() !== saved.toLowerCase());
+      return [saved, others[0], others[1]];
+    }
+    return randoms;
+  });
+
+  const savedName = localStorage.getItem(STORAGE_KEY);
+
+  const handleSelect = useCallback((profileName) => {
     setFading(true);
     setTimeout(() => onSelect(profileName), 800);
-  };
+  }, [onSelect]);
+
+  useEffect(() => {
+    if (modalOpen || fading) return;
+    if (timeLeft <= 0) {
+      handleSelect(displayedNames[0]);
+      return;
+    }
+    const id = setTimeout(() => setTimeLeft(t => t - 1), 1000);
+    return () => clearTimeout(id);
+  }, [timeLeft, modalOpen, fading, handleSelect, displayedNames]);
 
   const openModal = () => {
     setInputName('');
@@ -73,6 +97,8 @@ export default function ProfileSelect({ onSelect }) {
     if (e.key === 'Escape') closeModal();
   };
 
+  const progressPct = (timeLeft / AUTO_SECONDS) * 100;
+
   return (
     <div className={`profile-select-container ${fading ? 'fade-out' : 'fade-in'}`}>
       <div className="profile-top-bar">
@@ -82,18 +108,22 @@ export default function ProfileSelect({ onSelect }) {
       <div className="profile-select-content">
         <h1 className="profile-heading">What You Watching?</h1>
         <div className="profiles-row">
-          {selectedNames.map((name, idx) => (
-            <div
-              key={name}
-              className={`profile-card slide-up slide-up-delay-${idx}`}
-              onClick={() => handleSelect(name)}
-            >
-              <div className="profile-avatar" style={{ background: TILE_COLORS[idx] }}>
-                <span className="display-font profile-icon">{name[0]}</span>
+          {displayedNames.map((name, idx) => {
+            const isCustom = name === savedName;
+            const color = isCustom ? CUSTOM_TILE_COLOR : TILE_COLORS[idx];
+            return (
+              <div
+                key={name}
+                className={`profile-card slide-up slide-up-delay-${idx}`}
+                onClick={() => handleSelect(name)}
+              >
+                <div className="profile-avatar" style={{ background: color }}>
+                  <span className="display-font profile-icon">{name[0]}</span>
+                </div>
+                <span className="profile-name">{name}</span>
               </div>
-              <span className="profile-name">{name}</span>
-            </div>
-          ))}
+            );
+          })}
 
           <div className="profile-card add-profile-card slide-up slide-up-delay-3" onClick={openModal}>
             <div className="profile-avatar add-profile-avatar">
@@ -102,9 +132,16 @@ export default function ProfileSelect({ onSelect }) {
                 <line x1="4" y1="12" x2="20" y2="12"></line>
               </svg>
             </div>
-            <span className="profile-name">Add Profile</span>
+            <span className="profile-name">{savedName ? 'Change Name' : 'Add Profile'}</span>
           </div>
         </div>
+      </div>
+
+      <div className="auto-advance-bar">
+        <div
+          className="auto-advance-progress"
+          style={{ width: `${progressPct}%` }}
+        />
       </div>
 
       {modalOpen && (
