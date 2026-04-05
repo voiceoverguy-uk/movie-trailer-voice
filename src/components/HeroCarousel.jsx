@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { getThumbnail } from '../data/videos';
+import VideoModal from './VideoModal';
 import './HeroCarousel.css';
 
 export default function HeroCarousel({ heroClips, initialIndex }) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex || 0);
+  const [modalClip, setModalClip] = useState(null);
 
   const nextSlide = useCallback(() => {
     setCurrentIndex((prev) => (prev === heroClips.length - 1 ? 0 : prev + 1));
@@ -34,12 +36,12 @@ export default function HeroCarousel({ heroClips, initialIndex }) {
                 <h1 className="hero-title display-font">{clip.title}</h1>
                 <p className="hero-description">{clip.description}</p>
                 <div className="hero-actions">
-                  <a href={clip.url} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                  <button className="btn btn-primary" onClick={() => setModalClip(clip)}>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M8 5v14l11-7z" />
                     </svg>
                     Watch Now
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
@@ -70,6 +72,8 @@ export default function HeroCarousel({ heroClips, initialIndex }) {
           />
         ))}
       </div>
+
+      {modalClip && <VideoModal clip={modalClip} onClose={() => setModalClip(null)} />}
     </div>
   );
 }
