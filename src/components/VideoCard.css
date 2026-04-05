@@ -126,7 +126,7 @@
 
 @media (max-width: 600px) {
   .video-card { flex: 0 0 calc(50% - 0.5rem); min-width: 160px; }
-  .video-card-overlay { opacity: 1; }
+  .video-card-overlay { opacity: 0; }
   .video-card-play { display: none; }
   .video-card-title { font-size: 0.78rem; }
 }
