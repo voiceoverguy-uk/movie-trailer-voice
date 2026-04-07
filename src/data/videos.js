@@ -103,7 +103,6 @@ export const movieTrailerRow = {
     { title: 'Scottish National Party Parody Film', url: 'https://www.youtube.com/watch?v=18oOI8mHZzs', genre: 'Parody' },
     { title: 'Walking Dead: No Man\'s Land', url: 'https://www.youtube.com/watch?v=hZfE57Wdeew', genre: 'Trailer' },
     { title: 'Prison Architect Trailer', url: 'https://www.youtube.com/watch?v=dABtGif6pmE', genre: 'Game Trailer' },
-    { title: 'Dragon City Trailer', url: 'https://www.youtube.com/watch?v=ZtkYHKpKomM', genre: 'Game Trailer' },
     { title: 'Minecraft Beginners Handbook', url: 'https://www.youtube.com/watch?v=embrh2Y5VjI', genre: 'Trailer' },
     { title: 'Thorpe Park Fright Nights', url: 'https://www.youtube.com/watch?v=MD6hG2HVid0', genre: 'Promo' },
     { title: 'Turtle Strike Game Trailer', url: 'https://www.youtube.com/watch?v=IEqODwRGQig', genre: 'Game Trailer' },
