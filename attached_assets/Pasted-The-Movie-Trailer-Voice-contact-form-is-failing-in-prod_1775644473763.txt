@@ -1,0 +1,55 @@
+The Movie Trailer Voice contact form is failing in production with this validation message:
+
+“The string did not match the expected pattern.”
+
+I need you to debug and fix it so it works exactly like the working contact form on voiceoverguy.co.uk.
+
+Requirements:
+- Use the same architecture as voiceoverguy.co.uk
+- This is a static-export site deployed on Vercel
+- The form must POST to a root-level Vercel serverless function at /api/enquiry
+- Do NOT use a Next.js API route inside the app
+- Keep the implementation simple and robust
+
+Please check and fix all of the following:
+
+1. Front-end form
+- Inspect the current form fields and identify what is triggering the browser or schema pattern error
+- Remove any incorrect pattern, type, validation, or constraint causing valid emails to fail
+- Make sure the email field accepts normal email addresses like:
+  guywharris@btinternet.com
+- Keep validation to:
+  - name required
+  - valid email required
+  - message required
+  - message must contain at least 8 words
+- Include a hidden honeypot field called website
+- Submit with fetch('/api/enquiry', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(...) })
+
+2. Back-end function
+- Create or verify a root-level file: /api/enquiry.ts
+- Use @vercel/node, resend, and zod from the ROOT package.json
+- Match the same working logic as voiceoverguy.co.uk:
+  - POST only
+  - validate name, email, message, pageTitle, pageUrl, website
+  - silently succeed if honeypot is filled
+  - send email through Resend
+  - return JSON { ok: true } on success
+  - return a clear JSON error on failure
+
+3. Environment/config
+- Check that the form is not relying on local Next.js API routes
+- Confirm Vercel serverless functions are being used correctly
+- Confirm the required env vars are:
+  - RESEND_API_KEY
+  - CONTACT_TO_EMAIL
+  - CONTACT_FROM_EMAIL
+
+4. Important
+- Compare against the working voiceoverguy.co.uk contact form implementation and mirror it closely
+- Find the actual cause of the current failure, not just guess
+- Explain briefly what was broken
+- Fix it completely
+- Show me the exact files changed
+
+Use movietrailervoice.co.uk branding/email addresses, but keep the working VoiceoverGuy structure and logic.
