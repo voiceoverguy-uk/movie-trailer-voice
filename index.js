@@ -14,11 +14,18 @@ const FROM = process.env.CONTACT_FROM_EMAIL || 'noreply@voiceoverguy.co.uk';
 
 app.use(express.json());
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 app.post('/api/contact', async (req, res) => {
   const { name, email, message } = req.body || {};
 
   if (!name || !email || !message) {
     return res.status(400).json({ error: 'All fields are required.' });
+  }
+
+  const cleanEmail = email.trim().replace(/[^\x20-\x7E]/g, '');
+  if (!EMAIL_RE.test(cleanEmail)) {
+    return res.status(400).json({ error: 'Please enter a valid email address.' });
   }
 
   const wordCount = message.trim().split(/\s+/).filter(Boolean).length;
@@ -30,7 +37,7 @@ app.post('/api/contact', async (req, res) => {
     const { error: sendError } = await resend.emails.send({
       from: `Movie Trailer Voice <${FROM}>`,
       to: TO,
-      replyTo: email,
+      replyTo: cleanEmail,
       subject: `New enquiry from ${name}`,
       html: `
         <h2>New enquiry from Movie Trailer Voice site</h2>
