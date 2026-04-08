@@ -70,7 +70,9 @@ export default function ContactSection() {
                 />
                 <input
                   className="contact-input"
-                  type="email"
+                  type="text"
+                  inputMode="email"
+                  autoComplete="email"
                   placeholder="Your email"
                   value={form.email}
                   onChange={e => setForm(f => ({ ...f, email: e.target.value }))}

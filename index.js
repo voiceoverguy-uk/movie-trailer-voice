@@ -27,7 +27,7 @@ app.post('/api/contact', async (req, res) => {
   }
 
   try {
-    await resend.emails.send({
+    const { error: sendError } = await resend.emails.send({
       from: `Movie Trailer Voice <${FROM}>`,
       to: TO,
       replyTo: email,
@@ -40,6 +40,10 @@ app.post('/api/contact', async (req, res) => {
         <p>${message.replace(/\n/g, '<br>')}</p>
       `,
     });
+    if (sendError) {
+      console.error('Resend error:', sendError);
+      return res.status(500).json({ error: 'Failed to send message. Please try again.' });
+    }
     res.json({ ok: true });
   } catch (err) {
     console.error('Resend error:', err);
