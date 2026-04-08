@@ -1,0 +1,91 @@
+Please restyle the incoming contact-form email for movietrailervoice.co.uk so it looks polished, professional, and branded.
+
+Goal:
+Keep the same form functionality and delivery exactly as it is now, but improve the HTML email design so that when an enquiry arrives in Gmail or Apple Mail it feels like a proper branded lead notification, not a plain text dump.
+
+What I want:
+- A clean HTML email template
+- A branded header using the Movie Trailer Voice logo
+- A dark, cinematic, premium look
+- Strong readability on mobile
+- Professional spacing, padding, typography, and content hierarchy
+- Plain-text fallback still included for compatibility
+
+Design direction:
+Think premium film trailer / cinematic / Netflix-adjacent styling:
+- dark header
+- subtle black / charcoal / deep red accents
+- white main content area for readability
+- rounded content card
+- clear separation between header, enquiry details, and message body
+- polished but not overdesigned
+
+Please update the Resend email HTML so it includes:
+
+1. Header section
+- dark background
+- Movie Trailer Voice logo centred at the top
+- if the logo asset is available, use it
+- if not, temporarily use styled text “MOVIE TRAILER VOICE” until I provide the final logo path
+- optional small subheading such as:
+  “New website enquiry”
+
+2. Main content card
+- centred email container with max width around 600px
+- white or very light content panel on a light grey background
+- rounded corners
+- soft shadow or subtle border
+
+3. Enquiry title
+- prominent heading:
+  “New enquiry from Movie Trailer Voice”
+- smaller line below showing date/time if easy to include
+
+4. Contact details section
+Display these clearly in labelled rows:
+- Name
+- Email
+- Message
+
+Make the email address clickable with mailto:
+Use better spacing than the current version.
+
+5. Message section
+- Put the message inside a separate boxed area
+- preserve line breaks
+- make it easy to scan
+- this should be the visual focal point of the email
+
+6. Footer
+Include a small muted footer such as:
+“This enquiry was sent from movietrailervoice.co.uk”
+Optionally include the website URL.
+
+Technical requirements:
+- Keep the existing Resend send logic working exactly as it does now
+- Do not change who the email sends to unless necessary
+- Do not break the reply-to behaviour
+- Keep both html and text versions
+- Use table-safe / email-friendly HTML and inline styles where needed for email client compatibility
+- Make it render well in Gmail, Apple Mail, and Outlook
+- Avoid external CSS files
+- Avoid JavaScript
+- Avoid anything email clients commonly strip out
+
+Implementation task:
+- Find the current email template used in the serverless function or API mail handler
+- Replace the basic HTML string with a properly structured branded HTML email template
+- Preserve all submitted form values
+- Ensure any user-entered content is safely escaped before rendering into HTML
+
+Nice extra touches if easy:
+- small icon or accent bar near the heading
+- timestamp
+- reply button styled as a CTA linking to mailto:[sender email]
+- logo/header falls back gracefully if image is unavailable
+
+Done looks like:
+- Incoming enquiries now arrive with a branded cinematic header
+- The message is laid out in a professional card format
+- The email is easier to read on phone and desktop
+- Functionality remains unchanged
