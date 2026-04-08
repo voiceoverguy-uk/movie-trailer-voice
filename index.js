@@ -54,7 +54,7 @@ app.post('/api/contact', async (req, res) => {
       `,
     });
     if (sendError) {
-      console.error('Resend error:', sendError);
+      console.error('Resend sendError name=%s statusCode=%s message=%s', sendError.name, sendError.statusCode, sendError.message);
       return res.status(500).json({ error: 'Failed to send message. Please try again.' });
     }
     res.json({ ok: true });

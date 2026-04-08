@@ -35,10 +35,11 @@ export default function ContactSection() {
         body: JSON.stringify(form),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Something went wrong.');
+      if (!res.ok) throw new Error(data.error);
       setStatus('sent');
     } catch (err) {
-      setError(err.message);
+      const known = ['All fields are required.', 'Message must be at least 6 words.', 'Please enter a valid email address.', 'Failed to send message. Please try again.'];
+      setError(known.includes(err.message) ? err.message : 'Failed to send message. Please try again.');
       setStatus('idle');
     }
   }
