@@ -53,7 +53,7 @@ export default async function handler(req, res) {
     }
     return res.json({ ok: true });
   } catch (err) {
-    console.error('Resend error:', err);
+    console.error('Resend error name=%s statusCode=%s message=%s', err.name, err.statusCode, err.message);
     return res.status(500).json({ error: 'Failed to send message. Please try again.' });
   }
 }
