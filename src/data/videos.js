@@ -124,6 +124,7 @@ export const bMovieRow = {
     { title: 'B-Movie Trailer Voice', url: 'https://www.youtube.com/watch?v=bTUlbDBdT6A', genre: 'Parody' },
     { title: 'Rocket & Groot B-Movie Voice', url: 'https://www.youtube.com/watch?v=lw3_DUx5jrk', genre: 'Parody' },
     { title: 'FESPA', url: 'https://www.youtube.com/watch?v=91_4NJA5U_Y', genre: 'Parody' },
+    { title: 'Milo Crunchy Bites', url: 'https://www.youtube.com/watch?v=m6O8O2P6Mbg', genre: 'Parody' },
   ],
 };
 
