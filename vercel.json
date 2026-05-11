@@ -1,3 +1,10 @@
 {
+  "redirects": [
+    { "source": "/home",           "destination": "/", "permanent": true },
+    { "source": "/home/",          "destination": "/", "permanent": true },
+    { "source": "/home.php",       "destination": "/", "permanent": true },
+    { "source": "/custom-script",  "destination": "/", "permanent": true },
+    { "source": "/custom-script/", "destination": "/", "permanent": true }
+  ],
   "rewrites": [{ "source": "/((?!api/).*)", "destination": "/index.html" }]
 }
