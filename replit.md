@@ -67,3 +67,27 @@ The navbar links scroll to these `id` anchors:
 - `#other-suggestions` – Other Suggestions row
 - `#about` – About Guy Harris section
 - `#contact` – Contact / Book This Voice section
+
+## SEO & Google Search Console
+
+### Sitemap
+`public/sitemap.xml` lists the single canonical URL for this SPA:
+- **Canonical**: `https://www.movietrailervoice.co.uk/`
+- Non-routes (`/home.php`, `/home`, `/home/`, `/custom-script/`) are intentionally excluded — they are legacy paths with no content
+- `robots.txt` includes `Sitemap: https://www.movietrailervoice.co.uk/sitemap.xml`
+- `index.html` declares `<link rel="sitemap" type="application/xml" href="/sitemap.xml" />`
+
+### Google Search Console Submission (manual step)
+To prompt Google to re-crawl and clear "Alternate page with proper canonical tag" warnings:
+1. Go to [Google Search Console](https://search.google.com/search-console/) → select the `movietrailervoice.co.uk` property
+2. Navigate to **Sitemaps** in the left sidebar
+3. Enter `sitemap.xml` in the "Add a new sitemap" field and click **Submit**
+4. Confirm Google shows "Success" with 0 errors and 1 URL discovered
+5. For the flagged legacy URLs, use **URL Inspection** → Request Indexing on each:
+   - `https://www.movietrailervoice.co.uk/home.php`
+   - `https://www.movietrailervoice.co.uk/home`
+   - `https://www.movietrailervoice.co.uk/home/`
+   - `https://www.movietrailervoice.co.uk/custom-script/`
+6. Coverage warnings typically clear within 1–4 weeks after submission
+
+**Last sitemap update**: 2026-05-11

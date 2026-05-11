@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!--
+    Single-page application: the only canonical URL is the root.
+    Pages like /home.php, /home, /home/, /custom-script/ are NOT valid
+    routes — they were legacy paths that incorrectly appeared in Google's
+    index. The canonical for all content is https://www.movietrailervoice.co.uk/
+    Submitted to Google Search Console: 2026-05-11
+  -->
   <url>
     <loc>https://www.movietrailervoice.co.uk/</loc>
     <lastmod>2026-05-11</lastmod>
