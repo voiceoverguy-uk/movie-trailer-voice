@@ -1,0 +1,219 @@
+Please perform a complete audit of VideoObject structured data across the MovieTrailerVoice website:
+
+https://www.movietrailervoice.co.uk/
+
+IMPORTANT: This is an AUDIT / PLAN only. Do not make any code changes yet.
+
+Use Google's CURRENT Video structured data guidance as the primary standard:
+https://developers.google.com/search/docs/appearance/structured-data/video
+
+This website contains a substantial amount of video content, so please inspect the actual codebase, shared components/templates and page-specific implementations rather than checking only one or two pages.
+
+GOAL
+
+I want to ensure every VideoObject is truthful, technically correct, consistent with the visible video, and compliant with Google's current guidance.
+
+Please identify every place VideoObject structured data is generated or rendered and audit all published VideoObjects.
+
+For each VideoObject, check:
+
+- `@type`
+- `@id`
+- `name`
+- `description`
+- `thumbnailUrl`
+- `uploadDate`
+- `contentUrl`
+- `embedUrl`
+- `duration`
+- `creator`
+- `author`
+- `interactionStatistic`
+- any other video-specific properties currently being generated
+
+VISIBLE VIDEO MATCHING
+
+Confirm that every VideoObject corresponds to an actual video visibly available on that page.
+
+Check that:
+
+- the schema title identifies the same video the visitor sees;
+- description matches the actual video;
+- thumbnail belongs to that video;
+- player/embed URL belongs to that video;
+- there is no VideoObject markup for audio-only content;
+- there is no markup for videos merely linked from the page but not actually available on it;
+- the same video is not accidentally represented by conflicting duplicate VideoObjects.
+
+YOUTUBE / VIDEO PROVIDER CHECK
+
+Where videos are hosted by YouTube or another external provider:
+
+- verify that the video ID in the schema matches the visible embedded video;
+- verify that thumbnail URLs genuinely exist;
+- do NOT assume `maxresdefault.jpg` exists for every YouTube video;
+- identify broken or unavailable thumbnails;
+- check that `embedUrl` and/or `contentUrl` are being used appropriately;
+- account for any consent-gated or lazy-loaded video embeds.
+
+UPLOAD DATE — IMPORTANT
+
+Audit every `uploadDate`.
+
+The date must represent the genuine publication/upload date of the VIDEO where that can be established.
+
+Do NOT accept:
+- the surrounding web page publication date;
+- blog/article date;
+- page modification date;
+- build/deployment date;
+- today's date;
+- a hard-coded fallback date
+
+unless it genuinely represents the video's publication date.
+
+Where the genuine video publication date cannot be reliably established, flag that individual VideoObject for owner confirmation.
+
+Do not recommend inventing or estimating a date simply to satisfy Google's required fields.
+
+CREATOR / AUTHOR
+
+Review Google's current guidance concerning `creator` and `author`.
+
+Determine what entity should truthfully receive creator credit for the videos on MovieTrailerVoice.
+
+Where the site already contains a stable Person, Organization, LocalBusiness or other relevant entity with an `@id`, recommend reusing that entity rather than generating disconnected duplicates.
+
+Do not automatically assume every video was personally created by Guy Harris simply because he performs the voiceover.
+
+Distinguish appropriately between:
+- voiceover performer;
+- video creator;
+- video publisher;
+- production company/client;
+- MovieTrailerVoice/VoiceoverGuy.
+
+If the evidence does not establish who actually created/published a video, flag it rather than guessing.
+
+Recommend `creator` OR `author` where appropriate rather than automatically duplicating both.
+
+INTERACTION STATISTICS
+
+If `interactionStatistic` is currently used:
+
+- verify that the interaction type is supported by Google's current guidance;
+- verify that any figures are genuine and maintainable.
+
+Do not invent:
+- views;
+- likes;
+- engagement;
+- duration;
+- interaction counts.
+
+If reliable interaction data is unavailable, advise whether the property should simply be omitted.
+
+DURATION
+
+If duration is present:
+- verify that it represents the actual video duration;
+- verify ISO 8601 formatting;
+- flag any generated/default/fabricated durations.
+
+ENTITY / GRAPH CONSISTENCY
+
+Check whether VideoObjects are correctly connected to the site's existing schema graph.
+
+Look for:
+- duplicate Person entities;
+- duplicate Organization/LocalBusiness entities;
+- conflicting `@id` values;
+- orphaned VideoObjects;
+- duplicated VideoObjects for the same media;
+- inconsistent domain/canonical URLs;
+- video entities that could reference existing site entities more cleanly.
+
+Do NOT create new entities merely to make the schema look more elaborate.
+
+GOOGLE ELIGIBILITY VS SCHEMA.ORG VALIDITY
+
+Please distinguish between:
+
+1. technically valid Schema.org markup;
+2. Google's required/recommended VideoObject properties;
+3. markup that is technically valid but unlikely to qualify for Google's video features;
+4. demonstrably inaccurate structured data.
+
+Accuracy is more important than filling every possible property.
+
+If a video does not have enough reliable information for a truthful Google-eligible VideoObject, recommend omitting/defering its VideoObject rather than fabricating missing data.
+
+SITE-WIDE ARCHITECTURE
+
+Because MovieTrailerVoice contains many videos, also assess whether VideoObject markup is being generated efficiently.
+
+Please determine:
+- whether video schema comes from a shared component/helper;
+- whether individual pages hard-code their own JSON-LD;
+- whether there are inconsistent implementations across the site;
+- whether one central video-data structure/helper would make the schema safer and easier to maintain;
+- whether changing a shared component could unintentionally affect many pages.
+
+Do not recommend a major refactor unless there is a genuine maintainability or accuracy benefit.
+
+VALIDATION
+
+Please plan to test representative rendered pages against:
+- Google's Rich Results Test where applicable;
+- Schema.org Validator;
+- actual live/rendered JSON-LD output.
+
+Do not rely solely on TypeScript/build success as proof that structured data is correct.
+
+OUT OF SCOPE
+
+Do NOT change:
+- LocalBusiness schema
+- AudioObject schema
+- FAQPage schema
+- aggregateRating/review schema
+- unrelated metadata
+- canonical tags
+- analytics
+- redirects
+- sitemap configuration
+- unrelated SEO code
+
+If you discover a genuine conflict involving one of those systems, report it but do not change it.
+
+DO NOT IMPLEMENT ANYTHING YET.
+
+At the end, provide a concise audit report containing:
+
+1. How many pages contain visible video.
+2. How many VideoObjects are currently generated.
+3. Where/how VideoObject schema is generated in the codebase.
+4. Any REQUIRED FIXES.
+5. Any RECOMMENDED IMPROVEMENTS.
+6. Any OPTIONAL improvements.
+7. Any videos/schema requiring owner confirmation.
+8. Broken or incorrect thumbnails.
+9. Questionable or fabricated upload dates.
+10. Creator/author recommendations.
+11. Duplicate/conflicting VideoObjects or entities.
+12. Problems with contentUrl/embedUrl.
+13. Problems with duration or interactionStatistic.
+14. Exact files/components that would need changing.
+15. Proposed implementation plan.
+
+Classify every finding as:
+
+- REQUIRED FIX
+- RECOMMENDED IMPROVEMENT
+- OPTIONAL
+- NO CHANGE NEEDED
+- OWNER CONFIRMATION REQUIRED
+
+Do not make any changes, publish, deploy or sync.
+
+Stop after presenting the audit and proposed implementation plan and wait for my approval.
