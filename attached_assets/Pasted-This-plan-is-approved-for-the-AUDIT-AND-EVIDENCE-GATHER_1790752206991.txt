@@ -1,0 +1,57 @@
+This plan is approved for the AUDIT AND EVIDENCE-GATHERING stages only.
+
+Please proceed with Steps 1 and 2, but DO NOT yet implement VideoObject structured data.
+
+For all 55 distinct YouTube videos currently visible/playable on the MovieTrailerVoice site, build a per-video inventory showing:
+
+- YouTube video ID
+- visible title used on MovieTrailerVoice
+- actual YouTube/provider title where available
+- genuine YouTube publication/upload date where verifiable
+- working thumbnail URL
+- embed URL
+- whether the video is currently visible/playable on the page
+- whether it appears more than once on the page
+- whether creator/publisher can be established reliably
+- whether the title/identity is ambiguous
+- whether all information needed for truthful VideoObject markup is available
+
+Do not infer that Guy Harris or MovieTrailerVoice created a video simply because Guy supplied the voiceover.
+
+Do not invent:
+- upload dates
+- creators
+- publishers
+- durations
+- view counts
+- interaction statistics
+
+Where YouTube/provider metadata supplies reliable publication dates, record those as evidence.
+
+Where a thumbnail such as maxresdefault.jpg does not exist, identify a genuinely available thumbnail rather than assuming one.
+
+Please also assess the SEO value of implementing VideoObject on this particular site structure.
+
+The site is essentially a video-rich catalogue/showreel rather than 55 dedicated video watch pages.
+
+Please tell me:
+
+1. How many of the 55 videos have sufficient verified metadata for truthful VideoObject markup.
+2. How many need owner confirmation.
+3. How many should not currently be marked up.
+4. Whether you recommend:
+   - marking up all verified videos on the existing page;
+   - marking up only selected prominent videos;
+   - creating dedicated pages for selected important videos in future;
+   - or leaving the current page without VideoObject markup.
+5. What Google video-search/rich-result limitations apply because this is a multi-video catalogue page.
+6. Whether implementing many VideoObjects on this one page provides any meaningful SEO/discovery benefit beyond semantic description.
+7. Which videos, if any, appear particularly suitable for future dedicated video pages based on their current placement/content — but do NOT create those pages.
+
+Do not change any site code yet.
+
+Do not add JSON-LD.
+Do not redesign the site.
+Do not publish, deploy or sync.
+
+Stop after providing the evidence inventory and your recommendation.
