@@ -1,0 +1,30 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "E8xeo0QcksiSidV_64ewb"
+uri = "file://reports/video-metadata-audit.html"
+type = "html"
+title = "Video evidence audit — clarified readiness"
+description = "Full 55-video report with description-evidence limitations and audit-only SEO recommendation."
+logical_id = "f011a441-5cc0-4b5a-872f-d6f7045419a3"
+content_hash = "sha256:6ab758e0418d4e1f9378e1a4e00e261e8750346f601442a493973392435f7511"
+size = 50561
+mtime_ms = 1794764004275
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:94f731f8-f81c-4a5a-94be-f4ac11c64d70/f011a441-5cc0-4b5a-872f-d6f7045419a3/2ff7201e-1563-4d71-808a-fd245ce72a46"
+storage_version_token = "1794764014700058"
+content_type = "text/html"
+
+[[outputs]]
+id = "vNZDsR_YxumhPSe86_89z"
+uri = "file://reports/video-metadata-inventory.csv"
+type = "table"
+title = "Video evidence inventory — description fields included"
+description = "55 rows with precise timestamps, source URLs, description evidence and conservative readiness flags."
+logical_id = "94f11fd9-2e43-4fc1-b434-e3eed22b04e6"
+content_hash = "sha256:bcdb5fc1c9bc32f007017964104b6cbf619b00a388d4d4e9ca011098c650daa1"
+size = 39867
+mtime_ms = 1794764008699
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:94f731f8-f81c-4a5a-94be-f4ac11c64d70/94f11fd9-2e43-4fc1-b434-e3eed22b04e6/33295ce3-8b8a-44a5-8067-e9ab42a91d4a"
+storage_version_token = "1794764015467082"
+content_type = "text/csv"

@@ -1,0 +1,1 @@
+- [Video evidence scope](video-evidence-scope.md) — audit approval does not authorize video markup, site changes or release.
